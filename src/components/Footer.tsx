@@ -16,7 +16,9 @@ export function Footer() {
           {/* Dashed frame containing logos — narrow width, tight wrap */}
           <div className="relative mx-auto w-fit rounded-full border-2 border-dashed border-primary/50 bg-white/40 px-6 pt-7 pb-4 backdrop-blur-sm sm:px-8 sm:pt-8 sm:pb-5">
             {/* Caption overlapping the top border */}
-            <div className="absolute -top-3.5 left-1/2 flex -translate-x-1/2 items-center gap-2 whitespace-nowrap px-3">
+            {/* Caption overlapping the top border */}
+            <div className="absolute -top-3.5 left-1/2 flex -translate-x-1/2 items-center gap-2 whitespace-nowrap px-3 bg-white rounded-full">
+              {/* Thay đổi: Thêm `bg-white` (hoặc `bg-[#f8f9fa]` tùy màu nền của bạn) và đảm bảo có `px-3` để tạo khoảng trống che viền */}
               <Heart className="h-4 w-4 fill-pink text-pink" />
               <p className="font-display text-sm font-extrabold text-navy sm:text-base">
                 Hai cơ quan bảo trợ và đồng hành
