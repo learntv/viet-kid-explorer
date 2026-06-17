@@ -12,7 +12,7 @@ export function BuffaloMascot({
       className="pointer-events-none absolute z-20 -translate-x-1/2 transition-all duration-700 ease-in-out"
       style={{
         left: `${xPercent}%`,
-        top: `calc(${yPercent}% - 130px)`,
+        top: `calc(${yPercent}% - 95px)`,
       }}
     >
       <div className="relative flex flex-col items-center animate-bob">

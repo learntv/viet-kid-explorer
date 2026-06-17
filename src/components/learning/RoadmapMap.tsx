@@ -128,7 +128,7 @@ export function RoadmapMap({
 
         {/* Mascot — positioned to the left of the current flag */}
         <BuffaloMascot
-          xPercent={Math.max(4, currentPos.x - 9)}
+          xPercent={Math.max(6, currentPos.x - 5)}
           yPercent={currentPos.y}
         />
       </div>
