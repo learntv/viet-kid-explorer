@@ -88,7 +88,7 @@ export function RoadmapMap({
       </div>
 
       {/* Roadmap area */}
-      <div className="relative mt-4 h-[380px] w-full sm:h-[440px]">
+      <div className="relative mt-4 h-[320px] w-full sm:h-[360px]">
         {/* Dotted path */}
         <svg
           className="absolute inset-0 h-full w-full"
