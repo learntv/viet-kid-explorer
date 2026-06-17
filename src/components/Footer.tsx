@@ -10,7 +10,7 @@ export function Footer() {
         style={{ backgroundImage: `url(${lotusBanner})` }}
       >
         {/* Top fade gradient blending into page background */}
-        <div className="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-[oklch(0.97_0.01_250)] to-transparent pointer-events-none" />
+        <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[oklch(0.97_0.01_250)] to-transparent pointer-events-none [background-image:linear-gradient(to_bottom,in_oklch,oklch(0.97_0.01_250),transparent)]" />
 
         <div className="relative mx-auto max-w-4xl px-4 pt-10 sm:px-6 sm:pt-12">
           {/* Dashed frame containing logos — narrow width, tight wrap */}
