@@ -6,11 +6,11 @@ import halongScene from "@/assets/halong-scene.jpg";
 
 // Positions in % within the map area
 const NODE_POSITIONS = [
-  { x: 12, y: 75 },
-  { x: 30, y: 55 },
-  { x: 50, y: 72 },
-  { x: 70, y: 52 },
-  { x: 88, y: 68 },
+  { x: 10, y: 55 },
+  { x: 28, y: 28 },
+  { x: 50, y: 48 },
+  { x: 72, y: 25 },
+  { x: 90, y: 50 },
 ];
 
 export function RoadmapMap({
