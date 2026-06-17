@@ -1,5 +1,7 @@
 import { Heart } from "lucide-react";
 import lotusBanner from "@/assets/lotus-banner.jpg";
+import cvcecLogo from "@/assets/cvcec.jpg.asset.json";
+import bngLogo from "@/assets/bo-ngoai-giao.jpg.asset.json";
 
 export function Footer() {
   return (
@@ -27,19 +29,17 @@ export function Footer() {
             </div>
 
             {/* Logos row */}
-            <div className="flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-6">
-              <div className="flex items-center gap-2 rounded-full bg-white px-4 py-2 shadow-card">
-                <div className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-[oklch(0.55_0.22_27)] text-sm">
-                  ⭐
-                </div>
-                <span className="font-display text-sm font-extrabold text-navy">[Logo UBNVONN]</span>
-              </div>
-              <div className="flex items-center gap-2 rounded-full bg-white px-4 py-2 shadow-card">
-                <div className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-primary text-[9px] font-extrabold text-white">
-                  CVCEC
-                </div>
-                <span className="font-display text-sm font-extrabold text-navy">[Logo CVCEC]</span>
-              </div>
+            <div className="flex items-center justify-center gap-6 sm:gap-10">
+              <img
+                src={bngLogo.url}
+                alt="Bộ Ngoại Giao — Uỷ ban Nhà nước về người Việt Nam ở nước ngoài"
+                className="h-16 w-auto object-contain sm:h-20"
+              />
+              <img
+                src={cvcecLogo.url}
+                alt="Hội đồng Văn hoá & Giáo dục Canada - Việt Nam"
+                className="h-16 w-auto object-contain sm:h-20"
+              />
             </div>
           </div>
         </div>
