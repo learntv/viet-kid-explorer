@@ -6,7 +6,7 @@ export function Footer() {
     <footer className="relative mt-16">
       {/* Banner section with lotus background, fading into page bg at top */}
       <div
-        className="relative w-full bg-cover bg-center pb-4 sm:pb-20"
+        className="relative w-full bg-cover bg-center pb-4 sm:pb-4"
         style={{ backgroundImage: `url(${lotusBanner})` }}
       >
         {/* Top fade gradient blending into page background */}
