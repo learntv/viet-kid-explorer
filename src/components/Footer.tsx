@@ -1,69 +1,56 @@
 import { Heart } from "lucide-react";
+import lotusBanner from "@/assets/lotus-banner.jpg";
 
 export function Footer() {
   return (
     <footer className="relative mt-16">
-      {/* Lotus decorations */}
-      <div className="pointer-events-none absolute -top-4 left-2 text-5xl sm:text-6xl">🪷</div>
-      <div className="pointer-events-none absolute -top-4 right-2 text-5xl sm:text-6xl">🪷</div>
-
-      <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6">
-        {/* Caption */}
-        <div className="mb-5 flex items-center justify-center gap-2.5 text-pink">
-          <Heart className="h-5 w-5 fill-current" />
-          <p className="font-display text-lg font-extrabold sm:text-xl">
-            Hai cơ quan bảo trợ và đồng hành
-          </p>
-          <Heart className="h-5 w-5 fill-current" />
-        </div>
-
-        {/* Logos card */}
-        <div className="rounded-3xl border-2 border-dashed border-primary/30 bg-white/95 p-4 shadow-card sm:p-6">
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-            {/* UBNVONN */}
-            <div className="flex items-center justify-center gap-3 rounded-2xl bg-sky px-4 py-5 sm:py-6">
-              <div className="grid h-14 w-14 shrink-0 place-items-center rounded-full bg-[oklch(0.55_0.22_27)] text-2xl shadow-card">
-                ⭐
-              </div>
-              <span className="font-display text-base font-extrabold text-navy sm:text-lg">
-                [Logo UBNVONN]
-              </span>
+      {/* Banner section with lotus background */}
+      <div
+        className="relative w-full bg-cover bg-center pt-10 pb-16 sm:pt-12 sm:pb-20"
+        style={{ backgroundImage: `url(${lotusBanner})` }}
+      >
+        <div className="mx-auto max-w-4xl px-4 sm:px-6">
+          {/* Dashed frame containing logos */}
+          <div className="relative rounded-full border-2 border-dashed border-primary/50 bg-white/40 px-6 pt-7 pb-4 backdrop-blur-sm sm:px-10 sm:pt-8 sm:pb-5">
+            {/* Caption overlapping the top border */}
+            <div className="absolute -top-3.5 left-1/2 flex -translate-x-1/2 items-center gap-2 whitespace-nowrap px-3">
+              <Heart className="h-4 w-4 fill-pink text-pink" />
+              <p className="font-display text-sm font-extrabold text-navy sm:text-base">
+                Hai cơ quan bảo trợ và đồng hành
+              </p>
+              <Heart className="h-4 w-4 fill-pink text-pink" />
             </div>
-            {/* CVCEC */}
-            <div className="flex items-center justify-center gap-3 rounded-2xl bg-sky px-4 py-5 sm:py-6">
-              <div className="grid h-14 w-14 shrink-0 place-items-center rounded-full bg-primary text-xs font-extrabold text-white shadow-card">
-                CVCEC
+
+            {/* Logos row */}
+            <div className="flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-6">
+              <div className="flex items-center gap-2 rounded-full bg-white px-4 py-2 shadow-card">
+                <div className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-[oklch(0.55_0.22_27)] text-sm">
+                  ⭐
+                </div>
+                <span className="font-display text-sm font-extrabold text-navy">
+                  [Logo UBNVONN]
+                </span>
               </div>
-              <span className="font-display text-base font-extrabold text-navy sm:text-lg">
-                [Logo CVCEC]
-              </span>
+              <div className="flex items-center gap-2 rounded-full bg-white px-4 py-2 shadow-card">
+                <div className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-primary text-[9px] font-extrabold text-white">
+                  CVCEC
+                </div>
+                <span className="font-display text-sm font-extrabold text-navy">
+                  [Logo CVCEC]
+                </span>
+              </div>
             </div>
           </div>
         </div>
+      </div>
 
-        <p className="mt-6 text-center text-xs text-muted-foreground">
+      {/* Copyright */}
+      <div className="bg-white py-4">
+        <p className="text-center text-xs text-muted-foreground">
           © {new Date().getFullYear()} Tiếng Việt Online — Dự án phi lợi nhuận
           vì cộng đồng người Việt ở nước ngoài.
         </p>
       </div>
-
-      {/* Wave at very bottom */}
-      <svg
-        className="block h-10 w-full"
-        viewBox="0 0 1200 60"
-        preserveAspectRatio="none"
-      >
-        <path
-          d="M0 30 Q 100 10, 200 30 T 400 30 T 600 30 T 800 30 T 1000 30 T 1200 30 V60 H0 Z"
-          fill="oklch(0.86 0.06 235)"
-          opacity="0.5"
-        />
-        <path
-          d="M0 45 Q 100 25, 200 45 T 400 45 T 600 45 T 800 45 T 1000 45 T 1200 45 V60 H0 Z"
-          fill="oklch(0.78 0.09 235)"
-          opacity="0.6"
-        />
-      </svg>
     </footer>
   );
 }
