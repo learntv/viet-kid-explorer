@@ -17,7 +17,7 @@ export function StageNode({
   isCompleted: boolean;
   onClick: () => void;
 }) {
-  const size = isCurrent ? 84 : 70;
+  const size = isCurrent ? 100 : 85;
 
   return (
     <button
@@ -34,9 +34,14 @@ export function StageNode({
             width={size}
             height={size}
             className={[
-              "h-full w-full object-contain drop-shadow-[0_6px_12px_rgba(0,0,0,0.25)]",
+              "h-full w-full object-contain drop-shadow-[0_10px_16px_rgba(0,0,0,0.35)]",
               isCurrent ? "animate-bob" : "",
             ].join(" ")}
+          />
+          {/* Ground shadow */}
+          <div
+            className="absolute -bottom-1 left-1/2 h-2 -translate-x-1/2 rounded-[100%] bg-black/20 blur-sm"
+            style={{ width: size * 0.7 }}
           />
           {isCompleted && (
             <span className="absolute -right-1 -top-1 grid h-7 w-7 place-items-center rounded-full bg-green text-navy shadow-card ring-2 ring-white">
