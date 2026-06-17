@@ -31,7 +31,7 @@ function Index() {
   const [tab, setTab] = useState<TabKey>("info");
 
   return (
-    <div className="flex min-h-screen flex-col pt-3">
+    <div className="flex min-h-screen flex-col">
       <Navbar active={tab} onChange={setTab} />
 
       <main className="flex-1 transition-all duration-300">

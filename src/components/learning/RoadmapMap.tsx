@@ -6,11 +6,11 @@ import halongScene from "@/assets/halong-scene.jpg";
 
 // Positions in % within the map area
 const NODE_POSITIONS = [
-  { x: 12, y: 75 },
-  { x: 30, y: 55 },
-  { x: 50, y: 72 },
-  { x: 70, y: 52 },
-  { x: 88, y: 68 },
+  { x: 10, y: 55 },
+  { x: 28, y: 28 },
+  { x: 50, y: 48 },
+  { x: 72, y: 25 },
+  { x: 90, y: 50 },
 ];
 
 export function RoadmapMap({
@@ -39,7 +39,7 @@ export function RoadmapMap({
   }, "");
 
   return (
-    <div className="relative overflow-hidden rounded-3xl border-4 border-white shadow-soft">
+    <div className="relative w-full overflow-hidden shadow-soft pb-32 sm:pb-40">
       {/* Background scenery */}
       <img
         src={halongScene}
@@ -88,7 +88,7 @@ export function RoadmapMap({
       </div>
 
       {/* Roadmap area */}
-      <div className="relative mt-4 h-[380px] w-full sm:h-[440px]">
+      <div className="relative mt-4 h-[320px] w-full sm:h-[360px]">
         {/* Dotted path */}
         <svg
           className="absolute inset-0 h-full w-full"

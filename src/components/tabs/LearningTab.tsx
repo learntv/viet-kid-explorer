@@ -34,29 +34,37 @@ export function LearningTab() {
   const isLast = currentTopicIndex >= TOPICS.length - 1;
 
   return (
-    <section className="mx-auto max-w-6xl space-y-6 px-4 py-8 sm:px-6 sm:py-10">
-      <RoadmapMap
-        topic={topic}
-        topicIndex={currentTopicIndex}
-        totalTopics={TOPICS.length}
-        currentStageIndex={currentStageIndex}
-        completedStages={completedSet}
-        onSelectStage={setCurrentStageIndex}
-      />
+    <section className="w-full pb-10">
+      {/* Full-width map area with overlapping lesson card */}
+      <div className="relative w-full">
+        <RoadmapMap
+          topic={topic}
+          topicIndex={currentTopicIndex}
+          totalTopics={TOPICS.length}
+          currentStageIndex={currentStageIndex}
+          completedStages={completedSet}
+          onSelectStage={setCurrentStageIndex}
+        />
 
-      <LessonCard
-        topic={topic}
-        stage={stages[currentStageIndex]}
-        stageIndex={currentStageIndex}
-        totalStages={stages.length}
-        isCompleted={completedSet.has(currentStageIndex)}
-        allDone={allDone}
-        isLast={isLast}
-        onPrev={() => setCurrentStageIndex((i) => Math.max(0, i - 1))}
-        onNext={() => setCurrentStageIndex((i) => Math.min(stages.length - 1, i + 1))}
-        onComplete={completeStage}
-        onNextTopic={nextTopic}
-      />
+        {/* Lesson card overlaps the bottom of the map, constrained inside map width */}
+        <div className="relative z-20 -mt-24 px-4 sm:-mt-32 sm:px-8 lg:px-16">
+          <div className="mx-auto max-w-5xl">
+            <LessonCard
+              topic={topic}
+              stage={stages[currentStageIndex]}
+              stageIndex={currentStageIndex}
+              totalStages={stages.length}
+              isCompleted={completedSet.has(currentStageIndex)}
+              allDone={allDone}
+              isLast={isLast}
+              onPrev={() => setCurrentStageIndex((i) => Math.max(0, i - 1))}
+              onNext={() => setCurrentStageIndex((i) => Math.min(stages.length - 1, i + 1))}
+              onComplete={completeStage}
+              onNextTopic={nextTopic}
+            />
+          </div>
+        </div>
+      </div>
     </section>
   );
 }
