@@ -4,14 +4,17 @@ import lotusBanner from "@/assets/lotus-banner.jpg";
 export function Footer() {
   return (
     <footer className="relative mt-16">
-      {/* Banner section with lotus background */}
+      {/* Banner section with lotus background, fading into page bg at top */}
       <div
-        className="relative w-full bg-cover bg-center pt-10 pb-16 sm:pt-12 sm:pb-20"
+        className="relative w-full bg-cover bg-center pb-16 sm:pb-20"
         style={{ backgroundImage: `url(${lotusBanner})` }}
       >
-        <div className="mx-auto max-w-4xl px-4 sm:px-6">
-          {/* Dashed frame containing logos */}
-          <div className="relative rounded-full border-2 border-dashed border-primary/50 bg-white/40 pt-7 pb-4 backdrop-blur-sm sm:px-10 sm:pt-8 sm:pb-5">
+        {/* Top fade gradient blending into page background */}
+        <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[oklch(0.97_0.01_250)] to-transparent pointer-events-none" />
+
+        <div className="relative mx-auto max-w-4xl px-4 pt-10 sm:px-6 sm:pt-12">
+          {/* Dashed frame containing logos — narrow width, tight wrap */}
+          <div className="relative mx-auto w-fit rounded-full border-2 border-dashed border-primary/50 bg-white/40 px-6 pt-7 pb-4 backdrop-blur-sm sm:px-8 sm:pt-8 sm:pb-5">
             {/* Caption overlapping the top border */}
             <div className="absolute -top-3.5 left-1/2 flex -translate-x-1/2 items-center gap-2 whitespace-nowrap px-3">
               <Heart className="h-4 w-4 fill-pink text-pink" />
