@@ -39,7 +39,7 @@ export function RoadmapMap({
   }, "");
 
   return (
-    <div className="relative overflow-hidden rounded-3xl border-4 border-white shadow-soft">
+    <div className="relative w-full overflow-hidden shadow-soft pb-32 sm:pb-40">
       {/* Background scenery */}
       <img
         src={halongScene}
