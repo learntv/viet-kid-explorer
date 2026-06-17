@@ -76,7 +76,7 @@ const TOPIC_META: Omit<Topic, "id">[] = [
   { title: "Chủ đề 5: Thời tiết", emoji: "🌤️", accent: "primary" },
   { title: "Chủ đề 6: Đi chơi", emoji: "🎈", accent: "pink" },
   { title: "Chủ đề 7: Trường học", emoji: "🏫", accent: "purple" },
-  { title: "Chủ đề 8: Văn hóa Việt", emoji: "🏯", accent: "accent" as never },
+  { title: "Chủ đề 8: Văn hóa Việt", emoji: "🏯", accent: "pink" },
 ];
 
 export const TOPICS: Topic[] = TOPIC_META.map((t, i) => ({
