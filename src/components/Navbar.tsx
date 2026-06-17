@@ -20,8 +20,8 @@ export function Navbar({
   onChange: (k: TabKey) => void;
 }) {
   return (
-    <header className="sticky top-3 z-40 mx-3 sm:mx-6">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between gap-3 rounded-3xl bg-gradient-primary px-4 py-3 shadow-soft sm:px-6">
+    <header className="sticky top-0 z-40 w-full">
+      <nav className="flex w-full items-center justify-between gap-3 bg-gradient-primary px-4 py-3 shadow-soft sm:px-6">
         {/* Logo */}
         <button
           onClick={() => onChange("info")}
