@@ -1,15 +1,15 @@
-import { ChevronRight, Lock } from "lucide-react";
 import type { Topic } from "@/data/topics";
 import { STAGE_COLORS } from "@/data/topics";
 import { BuffaloMascot } from "./BuffaloMascot";
 import { StageNode } from "./StageNode";
+import halongScene from "@/assets/halong-scene.jpg";
 
-// Zigzag positions across the page (percent of container)
+// Positions in % within the map area
 const NODE_POSITIONS = [
-  { x: 14, y: 78 },
-  { x: 32, y: 50 },
-  { x: 50, y: 75 },
-  { x: 70, y: 45 },
+  { x: 12, y: 75 },
+  { x: 30, y: 55 },
+  { x: 50, y: 72 },
+  { x: 70, y: 52 },
   { x: 88, y: 68 },
 ];
 
@@ -20,7 +20,6 @@ export function RoadmapMap({
   currentStageIndex,
   completedStages,
   onSelectStage,
-  onNextTopic,
 }: {
   topic: Topic;
   topicIndex: number;
@@ -28,14 +27,10 @@ export function RoadmapMap({
   currentStageIndex: number;
   completedStages: Set<number>;
   onSelectStage: (i: number) => void;
-  onNextTopic: () => void;
 }) {
-  const allDone = completedStages.size >= 5;
-  const isLast = topicIndex >= totalTopics - 1;
-  const canAdvance = allDone && !isLast;
   const currentPos = NODE_POSITIONS[currentStageIndex] ?? NODE_POSITIONS[0];
 
-  // Build smooth curve path
+  // Smooth Bezier path
   const pathD = NODE_POSITIONS.reduce((acc, p, i, arr) => {
     if (i === 0) return `M ${p.x} ${p.y}`;
     const prev = arr[i - 1];
@@ -44,118 +39,89 @@ export function RoadmapMap({
   }, "");
 
   return (
-    <div className="mx-auto max-w-6xl px-4 sm:px-6">
-      {/* Title above the page */}
-      <div className="mb-4 flex flex-wrap items-end justify-between gap-3">
-        <div>
-          <h2 className="font-display text-3xl font-extrabold text-navy sm:text-4xl">
-            Hành trình Tiếng Việt
-          </h2>
-          <p className="mt-1 text-sm font-medium text-foreground/70 sm:text-base">
-            Cùng Trâu con đội nón lá khám phá tiếng Việt 🪭
-          </p>
+    <div className="relative overflow-hidden rounded-3xl border-4 border-white shadow-soft">
+      {/* Background scenery */}
+      <img
+        src={halongScene}
+        alt="Phong cảnh Việt Nam — Vịnh Hạ Long và Hội An"
+        width={1600}
+        height={896}
+        className="absolute inset-0 h-full w-full object-cover"
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-sky/30 via-transparent to-white/10" />
+
+      {/* Topic badge — top left */}
+      <div className="relative z-10 flex flex-wrap items-start justify-between gap-3 px-4 pt-4 sm:px-6 sm:pt-6">
+        <div className="flex items-center gap-2 rounded-2xl bg-white/95 px-3 py-2 shadow-card backdrop-blur">
+          <span className="text-xl">{topic.emoji}</span>
+          <div className="leading-tight">
+            <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">
+              Chủ đề {topicIndex + 1}/{totalTopics}
+            </p>
+            <p className="font-display text-sm font-extrabold text-navy">
+              {topic.title.split(":")[1]?.trim() || topic.title}
+            </p>
+          </div>
         </div>
-        <span className="rounded-full bg-white px-4 py-2 text-sm font-bold text-navy shadow-card">
-          Chủ đề {topicIndex + 1}/{totalTopics}
-        </span>
+        <div className="rounded-2xl bg-white/95 px-3 py-2 text-xs font-extrabold text-navy shadow-card backdrop-blur">
+          {completedStages.size}/5 chặng hoàn thành
+        </div>
       </div>
 
-      {/* "Book page" */}
-      <div className="relative overflow-hidden rounded-4xl border-4 border-white bg-gradient-page shadow-soft">
-        {/* Decorative scenery silhouettes */}
+      {/* Title ribbon — centered */}
+      <div className="relative z-10 mx-auto mt-2 w-fit max-w-[90%]">
+        <div className="relative">
+          {/* Ribbon body */}
+          <div className="relative rounded-2xl bg-gradient-to-b from-[oklch(0.88_0.15_80)] to-[oklch(0.75_0.18_55)] px-6 py-2.5 text-center shadow-card sm:px-10 sm:py-3">
+            <div className="absolute inset-0 rounded-2xl ring-2 ring-white/60 ring-inset" />
+            <h2 className="relative font-display text-xl font-extrabold text-white drop-shadow-[0_2px_2px_rgba(120,60,0,0.5)] sm:text-2xl">
+              Hành trình Tiếng Việt
+            </h2>
+            <p className="relative text-xs font-bold text-white/95 sm:text-sm">
+              Cùng Trâu con đội nón lá
+            </p>
+          </div>
+          {/* Ribbon tails */}
+          <div className="absolute -left-3 top-1/2 h-6 w-6 -translate-y-1/2 rotate-45 bg-[oklch(0.6_0.18_45)] opacity-70" />
+          <div className="absolute -right-3 top-1/2 h-6 w-6 -translate-y-1/2 rotate-45 bg-[oklch(0.6_0.18_45)] opacity-70" />
+        </div>
+      </div>
+
+      {/* Roadmap area */}
+      <div className="relative mt-4 h-[380px] w-full sm:h-[440px]">
+        {/* Dotted path */}
         <svg
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 w-full opacity-60"
-          viewBox="0 0 800 300"
+          className="absolute inset-0 h-full w-full"
+          viewBox="0 0 100 100"
           preserveAspectRatio="none"
         >
-          <path d="M0 220 L120 130 L180 180 L260 90 L340 170 L420 110 L520 180 L640 100 L720 160 L800 130 L800 300 L0 300 Z" fill="oklch(0.7 0.08 150)" />
-          <path d="M0 250 L80 200 L160 240 L240 190 L340 230 L460 200 L560 240 L680 200 L800 230 L800 300 L0 300 Z" fill="oklch(0.78 0.1 130)" />
-          <path d="M0 280 L800 280 L800 300 L0 300 Z" fill="oklch(0.82 0.12 120)" />
+          <path
+            d={pathD}
+            fill="none"
+            stroke="white"
+            strokeWidth="1.4"
+            strokeDasharray="2.5 2.5"
+            strokeLinecap="round"
+            opacity="0.95"
+          />
         </svg>
 
-        {/* Sun & clouds */}
-        <div className="pointer-events-none absolute top-4 right-6 text-5xl animate-bob">☀️</div>
-        <div className="pointer-events-none absolute top-6 left-10 text-3xl animate-float-slow">☁️</div>
-        <div className="pointer-events-none absolute top-14 left-1/3 text-2xl animate-float-slow">☁️</div>
-        <div className="pointer-events-none absolute top-3 left-1/2 text-3xl">🪁</div>
+        {/* Stage nodes */}
+        {NODE_POSITIONS.map((p, i) => (
+          <StageNode
+            key={i}
+            index={i}
+            xPercent={p.x}
+            yPercent={p.y}
+            color={STAGE_COLORS[i]}
+            isCurrent={i === currentStageIndex}
+            isCompleted={completedStages.has(i)}
+            onClick={() => onSelectStage(i)}
+          />
+        ))}
 
-        {/* Topic badge */}
-        <div className="relative z-10 flex flex-wrap items-center justify-between gap-3 px-5 pt-5 sm:px-8 sm:pt-8">
-          <div className="flex items-center gap-3 rounded-2xl bg-white/90 px-4 py-2 shadow-card backdrop-blur">
-            <span className="text-2xl">{topic.emoji}</span>
-            <span className="font-display text-lg font-extrabold text-navy">
-              {topic.title}
-            </span>
-          </div>
-          <div className="rounded-2xl bg-white/90 px-3 py-1 text-xs font-bold text-navy shadow-card backdrop-blur">
-            {completedStages.size}/5 chặng hoàn thành
-          </div>
-        </div>
-
-        {/* Roadmap area */}
-        <div className="relative mt-4 h-[440px] w-full sm:h-[520px]">
-          {/* Dotted path */}
-          <svg
-            className="absolute inset-0 h-full w-full"
-            viewBox="0 0 100 100"
-            preserveAspectRatio="none"
-          >
-            <path
-              d={pathD}
-              fill="none"
-              stroke="white"
-              strokeWidth="1.2"
-              strokeDasharray="2 2"
-              strokeLinecap="round"
-              opacity="0.95"
-            />
-          </svg>
-
-          {/* Stage nodes */}
-          {NODE_POSITIONS.map((p, i) => (
-            <StageNode
-              key={i}
-              index={i}
-              xPercent={p.x}
-              yPercent={p.y}
-              color={STAGE_COLORS[i]}
-              isCurrent={i === currentStageIndex}
-              isCompleted={completedStages.has(i)}
-              onClick={() => onSelectStage(i)}
-            />
-          ))}
-
-          {/* Mascot at current stage */}
-          <BuffaloMascot xPercent={currentPos.x} yPercent={currentPos.y} />
-        </div>
-
-        {/* Bottom bar inside book page */}
-        <div className="relative z-10 flex flex-col items-center justify-between gap-3 px-5 pb-5 sm:flex-row sm:px-8 sm:pb-7">
-          <p className="text-xs font-medium text-navy/70 sm:text-sm">
-            {allDone
-              ? isLast
-                ? "Bạn đã hoàn thành toàn bộ lộ trình. Giỏi quá!"
-                : "Tuyệt vời! Bạn có thể lật sang trang tiếp theo."
-              : "Hoàn thành cả 5 chặng để mở khóa trang tiếp theo!"}
-          </p>
-
-          <button
-            disabled={!canAdvance}
-            onClick={onNextTopic}
-            className={[
-              "inline-flex items-center gap-2 rounded-2xl px-5 py-3 font-display text-sm font-extrabold transition-all sm:text-base",
-              canAdvance
-                ? "bg-gradient-sunset text-navy shadow-glow-yellow hover:scale-[1.03]"
-                : "cursor-not-allowed bg-white/80 text-navy/50 shadow-card",
-            ].join(" ")}
-          >
-            {!canAdvance && <Lock className="h-4 w-4" />}
-            {isLast && allDone
-              ? "Đã hoàn thành lộ trình"
-              : "Lật sang trang tiếp theo"}
-            {canAdvance && <ChevronRight className="h-4 w-4" />}
-          </button>
-        </div>
+        {/* Mascot */}
+        <BuffaloMascot xPercent={currentPos.x} yPercent={currentPos.y} />
       </div>
     </div>
   );

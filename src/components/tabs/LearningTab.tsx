@@ -1,13 +1,12 @@
 import { useMemo, useState } from "react";
 import { TOPICS, getStagesForTopic } from "@/data/topics";
 import { RoadmapMap } from "@/components/learning/RoadmapMap";
-import { LessonModal } from "@/components/learning/LessonModal";
+import { LessonCard } from "@/components/learning/LessonCard";
 
 export function LearningTab() {
   const [currentTopicIndex, setCurrentTopicIndex] = useState(0);
   const [currentStageIndex, setCurrentStageIndex] = useState(0);
   const [completedByTopic, setCompletedByTopic] = useState<Record<number, number[]>>({});
-  const [isLessonModalOpen, setIsLessonModalOpen] = useState(false);
 
   const topic = TOPICS[currentTopicIndex];
   const stages = useMemo(() => getStagesForTopic(currentTopicIndex), [currentTopicIndex]);
@@ -15,11 +14,6 @@ export function LearningTab() {
     () => new Set(completedByTopic[currentTopicIndex] ?? []),
     [completedByTopic, currentTopicIndex],
   );
-
-  const openStage = (i: number) => {
-    setCurrentStageIndex(i);
-    setIsLessonModalOpen(true);
-  };
 
   const completeStage = () => {
     setCompletedByTopic((prev) => {
@@ -36,33 +30,32 @@ export function LearningTab() {
     setCompletedByTopic((prev) => ({ ...prev, [currentTopicIndex + 1]: [] }));
   };
 
+  const allDone = completedSet.size >= 5;
+  const isLast = currentTopicIndex >= TOPICS.length - 1;
+
   return (
-    <section className="py-8 sm:py-10">
+    <section className="mx-auto max-w-6xl space-y-6 px-4 py-8 sm:px-6 sm:py-10">
       <RoadmapMap
         topic={topic}
         topicIndex={currentTopicIndex}
         totalTopics={TOPICS.length}
         currentStageIndex={currentStageIndex}
         completedStages={completedSet}
-        onSelectStage={openStage}
-        onNextTopic={nextTopic}
+        onSelectStage={setCurrentStageIndex}
       />
 
-      <LessonModal
-        open={isLessonModalOpen}
+      <LessonCard
         topic={topic}
         stage={stages[currentStageIndex]}
         stageIndex={currentStageIndex}
         totalStages={stages.length}
         isCompleted={completedSet.has(currentStageIndex)}
-        onClose={() => setIsLessonModalOpen(false)}
-        onPrev={() =>
-          setCurrentStageIndex((i) => Math.max(0, i - 1))
-        }
-        onNext={() =>
-          setCurrentStageIndex((i) => Math.min(stages.length - 1, i + 1))
-        }
+        allDone={allDone}
+        isLast={isLast}
+        onPrev={() => setCurrentStageIndex((i) => Math.max(0, i - 1))}
+        onNext={() => setCurrentStageIndex((i) => Math.min(stages.length - 1, i + 1))}
         onComplete={completeStage}
+        onNextTopic={nextTopic}
       />
     </section>
   );

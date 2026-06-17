@@ -1,4 +1,4 @@
-import { BookMarked, Copyright, Heart, Network, ShieldCheck } from "lucide-react";
+import { BookMarked, Copyright, Heart, Info, Network, ShieldCheck } from "lucide-react";
 import { InfoCard } from "./InfoCard";
 
 const CARDS = [
@@ -14,7 +14,7 @@ const CARDS = [
     body:
       "Dự án số hóa hai cuốn sách của NXB ĐH Sư Phạm TP Hồ Chí Minh, được thực hiện trong khuôn khổ Chương trình Tôn vinh tiếng Việt trong cộng đồng người Việt Nam ở nước ngoài, do UBNVONN – Bộ Ngoại giao phát động.",
     Icon: BookMarked,
-    accent: "yellow" as const,
+    accent: "green" as const,
   },
   {
     heading: "Hệ sinh thái",
@@ -28,41 +28,42 @@ const CARDS = [
     body:
       "Dự án được bảo hộ bản quyền bởi đồng tác giả: Phan Thị Quỳnh Trang - Nguyễn Trần Thanh Hải - Nguyễn Phương Mai.",
     Icon: Copyright,
-    accent: "pink" as const,
+    accent: "orange" as const,
   },
 ];
 
 export function InfoTab() {
   return (
     <section className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-14">
-      <header className="mb-8 text-center sm:mb-12">
-        <span className="inline-block rounded-full bg-yellow px-4 py-1 text-sm font-bold text-navy shadow-card">
-          Giới thiệu
-        </span>
-        <h2 className="mt-4 font-display text-3xl font-extrabold text-navy sm:text-5xl">
-          Thông tin dự án
-        </h2>
+      <header className="mb-8 flex flex-col items-center text-center sm:mb-12">
+        <div className="flex items-center gap-3">
+          <span className="grid h-11 w-11 place-items-center rounded-2xl bg-primary text-white shadow-card">
+            <Info className="h-5 w-5" strokeWidth={2.5} />
+          </span>
+          <h2 className="font-display text-3xl font-extrabold text-navy sm:text-5xl">
+            Thông tin
+          </h2>
+        </div>
         <p className="mx-auto mt-3 max-w-2xl text-base text-foreground/70">
           Đôi nét về sứ mệnh, đối tác và bản quyền của Tiếng Việt Online.
         </p>
       </header>
 
-      <div className="grid grid-cols-1 gap-5 sm:gap-6 md:grid-cols-2">
+      <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
         {CARDS.map((c) => (
           <InfoCard key={c.heading} {...c} />
         ))}
       </div>
 
-      <article className="mt-6 overflow-hidden rounded-3xl border border-pink/30 bg-gradient-thanks p-6 shadow-soft sm:mt-8 sm:p-10">
-        <div className="flex items-center gap-3">
-          <span className="grid h-12 w-12 place-items-center rounded-2xl bg-pink text-white shadow-card">
-            <Heart className="h-6 w-6" fill="currentColor" />
-          </span>
-          <h3 className="font-display text-2xl font-extrabold text-navy sm:text-3xl">
+      <article className="relative mt-6 overflow-hidden rounded-3xl border-2 border-pink/40 bg-gradient-thanks p-6 shadow-soft sm:mt-8 sm:p-10">
+        <div className="flex items-center justify-center gap-3">
+          <Heart className="h-6 w-6 text-pink" fill="currentColor" />
+          <h3 className="font-display text-2xl font-extrabold text-pink sm:text-3xl">
             Lời cảm ơn
           </h3>
+          <Heart className="h-6 w-6 text-pink" fill="currentColor" />
         </div>
-        <p className="mt-4 text-[15px] leading-relaxed text-foreground/85 sm:text-lg">
+        <p className="mt-4 text-center text-[15px] leading-relaxed text-foreground/85 sm:text-base">
           Ban quản lý dự án xin được gửi lời cảm ơn chân thành tới Ủy ban Nhà
           nước về người Việt Nam ở nước ngoài – Bộ Ngoại giao đã luôn đồng hành
           và định hướng. Chúng tôi xin gửi lời tri ân sâu sắc tới các Đại sứ
