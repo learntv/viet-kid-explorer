@@ -84,13 +84,13 @@ export function Footer() {
             <p className="mb-4 text-sm text-muted-foreground">
               Nhận tin tức và tài liệu mới nhất cho bé yêu của bạn.
             </p>
-            <div className="flex gap-2">
+            <div className="flex flex-col gap-2 lg:flex-row">
               <input
                 type="email"
                 placeholder="Nhập email của bạn"
-                className="flex-1 rounded-full border border-border bg-white px-4 py-2 text-sm placeholder:text-muted-foreground focus:border-primary focus:outline-none"
+                className="w-full rounded-full border border-border bg-white px-4 py-2 text-sm placeholder:text-muted-foreground focus:border-primary focus:outline-none lg:flex-1"
               />
-              <button className="flex items-center gap-1.5 rounded-full bg-primary px-4 py-2 text-sm font-bold text-white transition-all hover:bg-primary/90">
+              <button className="flex shrink-0 items-center justify-center gap-1.5 rounded-full bg-primary px-4 py-2 text-sm font-bold text-white transition-all hover:bg-primary/90">
                 <Send className="h-3.5 w-3.5" strokeWidth={2.5} />
                 <span>Đăng ký</span>
               </button>

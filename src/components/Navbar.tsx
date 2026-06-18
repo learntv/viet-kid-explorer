@@ -1,4 +1,4 @@
-import { BookOpen, Home, Search, Star, User } from "lucide-react";
+import { BookOpen, Home, Star, User } from "lucide-react";
 import { Link, useRouterState } from "@tanstack/react-router";
 
 const tabs: {
@@ -55,23 +55,7 @@ export function Navbar() {
           })}
         </ul>
 
-        {/* Right: search + login */}
-        <div className="ml-auto flex shrink-0 items-center gap-2">
-          <div className="hidden items-center gap-2 rounded-full border border-border bg-muted px-3 py-2 sm:flex">
-            <Search className="h-4 w-4 text-muted-foreground" strokeWidth={2} />
-            <input
-              type="text"
-              placeholder="Tìm bài học, chủ đề..."
-              className="w-40 bg-transparent text-sm text-foreground placeholder:text-muted-foreground focus:outline-none lg:w-52"
-            />
-          </div>
-          <button className="flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-bold text-white shadow-sm transition-all hover:bg-primary/90 hover:shadow-md">
-            <User className="h-4 w-4" strokeWidth={2.5} />
-            <span className="hidden sm:inline">Đăng nhập</span>
-          </button>
-        </div>
-
-        {/* Mobile nav toggle — small screens */}
+        {/* Mobile nav — small screens, before right section so it doesn't get pushed off */}
         <ul className="flex items-center gap-1 md:hidden">
           {tabs.map(({ to, Icon }) => {
             const isActive = pathname === to;
@@ -90,6 +74,14 @@ export function Navbar() {
             );
           })}
         </ul>
+
+        {/* Right: search + login */}
+        <div className="ml-auto flex shrink-0 items-center gap-2">
+<button className="flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-bold text-white shadow-sm transition-all hover:bg-primary/90 hover:shadow-md">
+            <User className="h-4 w-4" strokeWidth={2.5} />
+            <span className="hidden sm:inline">Đăng nhập</span>
+          </button>
+        </div>
       </nav>
     </header>
   );
