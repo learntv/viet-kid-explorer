@@ -1,4 +1,6 @@
 import { Facebook, Youtube, Twitter, Music2, Send } from "lucide-react";
+import boNgoaiGiao from "@/assets/bo-ngoai-giao.png";
+import cvcec from "@/assets/cvcec.png";
 
 export function Footer() {
   return (
@@ -85,8 +87,16 @@ export function Footer() {
         </div>
       </div>
 
+      {/* Partner logos */}
+      <div className="bg-white py-6 border-t border-border">
+        <div className="mx-auto max-w-7xl px-4 flex items-center justify-center gap-8 flex-wrap">
+          <img src={boNgoaiGiao} alt="Bộ Ngoại giao" className="h-12 w-auto object-contain" loading="lazy" />
+          <img src={cvcec} alt="CVCEC" className="h-12 w-auto object-contain" loading="lazy" />
+        </div>
+      </div>
+
       {/* Copyright bar */}
-      <div className="bg-white py-4">
+      <div className="bg-white py-4 border-t border-border">
         <p className="text-center text-xs text-muted-foreground">
           © {new Date().getFullYear()} Vui Học Tiếng Việt. Tất cả quyền được bảo lưu.
         </p>
