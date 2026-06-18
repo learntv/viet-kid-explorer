@@ -36,7 +36,7 @@ export function LearningTab() {
   return (
     <section className="w-full pb-10">
       {/* Full-width map area with overlapping lesson card */}
-      <div id="roadmap-start" className="relative mt-8 w-full">
+      <div id="roadmap-start" className="relative w-full">
         <RoadmapMap
           topic={topic}
           topicIndex={currentTopicIndex}
