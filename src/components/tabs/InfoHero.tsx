@@ -1,42 +1,31 @@
-import { BookOpen, BookMarked, ShieldCheck, Network, Heart, ArrowRight } from "lucide-react";
+import { BookOpen, Flower2, Landmark, Headphones, ArrowRight } from "lucide-react";
 import heroImage from "@/assets/hero-learning.jpg";
 
 export function InfoHero() {
   const stats = [
     {
-      num: "01",
-      icon: ShieldCheck,
-      iconBg: "bg-blue-100 text-blue-700",
-      title: "Bảo trợ chuyên môn",
-      desc: "Dự án thực hiện dưới sự bảo trợ của UBNVONN – Bộ Ngoại giao.",
-    },
-    {
-      num: "02",
-      icon: BookMarked,
-      iconBg: "bg-green-100 text-green-700",
-      title: "Dự án số hóa",
-      desc: "Số hóa 2 cuốn sách Vui học Tiếng Việt của NXB ĐH Sư Phạm TP.HCM.",
-    },
-    {
-      num: "03",
-      icon: Network,
-      iconBg: "bg-purple-100 text-purple-700",
-      title: "Hệ sinh thái",
-      desc: "Thành viên Mạng lưới cơ sở giảng dạy tiếng Việt và văn hóa Việt Nam ở nước ngoài.",
-    },
-    {
-      num: "04",
       icon: BookOpen,
       iconBg: "bg-amber-100 text-amber-700",
-      title: "Nội dung học",
-      desc: "40 bài học, 8 chủ đề bám sát chương trình cho trẻ em kiều bào.",
+      title: <><span className="text-red-700">40</span> bài học</>,
+      desc: "Bám sát 2 quyển sách Vui học Tiếng Việt",
     },
     {
-      num: "05",
-      icon: Heart,
-      iconBg: "bg-pink-100 text-pink-700",
-      title: "Tri ân",
-      desc: "Cảm ơn các Đại sứ quán, cơ quan ban ngành tại Việt Nam và Canada.",
+      icon: Flower2,
+      iconBg: "bg-green-100 text-green-700",
+      title: <><span className="text-red-700">8</span> chủ đề</>,
+      desc: "Mỗi quyển có 4 chủ đề, mỗi chủ đề 5 bài học",
+    },
+    {
+      icon: Landmark,
+      iconBg: "bg-yellow-100 text-yellow-700",
+      title: "Hình ảnh Việt Nam",
+      desc: "Giới thiệu phong cảnh, văn hóa và con người Việt",
+    },
+    {
+      icon: Headphones,
+      iconBg: "bg-indigo-100 text-indigo-700",
+      title: "Luyện đọc – viết – nghe – nói",
+      desc: "Phát triển toàn diện 4 kỹ năng tiếng Việt",
     },
   ];
 
@@ -44,10 +33,10 @@ export function InfoHero() {
     <section className="w-full px-4 pt-6 sm:px-6 lg:px-10">
       <div className="mx-auto max-w-7xl">
         {/* Hero banner */}
-        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-50 shadow-sm ring-1 ring-blue-100/60">
+        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-amber-50 via-orange-50 to-rose-50 shadow-sm ring-1 ring-amber-100/60">
           <div className="grid grid-cols-1 items-center gap-6 p-6 sm:p-10 lg:grid-cols-2 lg:gap-4 lg:p-12">
             <div className="relative z-10">
-              <h1 className="font-serif text-4xl font-bold leading-tight text-blue-800 sm:text-5xl lg:text-6xl">
+              <h1 className="font-serif text-4xl font-bold leading-tight text-red-800 sm:text-5xl lg:text-6xl">
                 THÔNG TIN DỰ ÁN
               </h1>
               <p className="mt-4 text-xl font-medium text-stone-700 sm:text-2xl">
@@ -59,7 +48,7 @@ export function InfoHero() {
 
               <button
                 type="button"
-                className="mt-6 inline-flex items-center gap-2 rounded-full bg-blue-700 px-6 py-3 text-base font-semibold text-white shadow-md transition hover:bg-blue-800 hover:shadow-lg"
+                className="mt-6 inline-flex items-center gap-2 rounded-full bg-red-700 px-6 py-3 text-base font-semibold text-white shadow-md transition hover:bg-red-800 hover:shadow-lg"
                 onClick={() => {
                   document.getElementById("info-cards-start")?.scrollIntoView({ behavior: "smooth" });
                 }}
@@ -86,7 +75,7 @@ export function InfoHero() {
             <div className="relative">
               <img
                 src={heroImage}
-                alt="Phong cảnh Việt Nam với trẻ em mặc áo dài"
+                alt="Trẻ em Việt Nam mặc áo dài đọc sách bên hồ sen"
                 className="h-full w-full rounded-2xl object-cover"
                 width={1600}
                 height={800}
@@ -95,19 +84,18 @@ export function InfoHero() {
           </div>
         </div>
 
-        {/* Numbered info cards */}
-        <div id="info-cards-start" className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
+        {/* Stats cards */}
+        <div id="info-cards-start" className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {stats.map((s, i) => (
             <div
               key={i}
-              className="flex flex-col items-center gap-3 rounded-2xl bg-white p-5 shadow-sm ring-1 ring-stone-100 text-center"
+              className="flex items-center gap-4 rounded-2xl bg-white p-5 shadow-sm ring-1 ring-stone-100"
             >
-              <div className="text-3xl font-black text-stone-200">{s.num}</div>
-              <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-full ${s.iconBg}`}>
-                <s.icon className="h-6 w-6" />
+              <div className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-full ${s.iconBg}`}>
+                <s.icon className="h-7 w-7" />
               </div>
               <div className="min-w-0">
-                <div className="text-base font-bold text-stone-800">{s.title}</div>
+                <div className="text-lg font-bold text-stone-800">{s.title}</div>
                 <div className="text-sm text-stone-600">{s.desc}</div>
               </div>
             </div>
