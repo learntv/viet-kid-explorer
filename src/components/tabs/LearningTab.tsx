@@ -2,7 +2,6 @@ import { useMemo, useState } from "react";
 import { TOPICS, getStagesForTopic } from "@/data/topics";
 import { RoadmapMap } from "@/components/learning/RoadmapMap";
 import { LessonCard } from "@/components/learning/LessonCard";
-import { LearningHero } from "@/components/learning/LearningHero";
 
 export function LearningTab() {
   const [currentTopicIndex, setCurrentTopicIndex] = useState(0);
@@ -36,8 +35,6 @@ export function LearningTab() {
 
   return (
     <section className="w-full pb-10">
-      <LearningHero />
-
       {/* Full-width map area with overlapping lesson card */}
       <div id="roadmap-start" className="relative mt-8 w-full">
         <RoadmapMap
