@@ -1,15 +1,14 @@
-import { BookOpen, Home, Star } from "lucide-react";
+import { BookOpen, Home, Search, Star, User } from "lucide-react";
 import type { TabKey } from "@/lib/tabs";
 
 const tabs: {
   key: TabKey;
   label: string;
   Icon: typeof Home;
-  iconColor: string;
 }[] = [
-  { key: "info", label: "Thông tin", Icon: Home, iconColor: "text-primary" },
-  { key: "learn", label: "Vui học Tiếng Việt", Icon: BookOpen, iconColor: "text-[oklch(0.6_0.18_30)]" },
-  { key: "kids", label: "Góc của em", Icon: Star, iconColor: "text-pink" },
+  { key: "info", label: "Trang chủ", Icon: Home },
+  { key: "learn", label: "Vui học Tiếng Việt", Icon: BookOpen },
+  { key: "kids", label: "Sản phẩm của em", Icon: Star },
 ];
 
 export function Navbar({
@@ -20,49 +19,75 @@ export function Navbar({
   onChange: (k: TabKey) => void;
 }) {
   return (
-    <header className="sticky top-0 z-40 w-full">
-      <nav className="flex w-full items-center justify-between gap-3 bg-gradient-primary px-4 py-3 shadow-soft sm:px-6">
+    <header className="sticky top-0 z-40 w-full bg-white shadow-[0_2px_8px_-2px_oklch(0.22_0.05_30/0.12)]">
+      <nav className="mx-auto flex max-w-7xl items-center gap-4 px-4 py-3 sm:px-6">
         {/* Logo */}
         <button
           onClick={() => onChange("info")}
-          className="flex items-center gap-3 transition-transform hover:scale-[1.02]"
+          className="flex shrink-0 items-center gap-2.5 transition-transform hover:scale-[1.02]"
         >
-          <div className="relative grid h-12 w-12 place-items-center rounded-2xl bg-white shadow-card">
-            {/* Conical hat SVG */}
-            <svg viewBox="0 0 64 64" className="absolute -top-2 h-7 w-7">
-              <path d="M32 6 L52 36 Q32 32 12 36 Z" fill="oklch(0.85 0.12 80)" stroke="oklch(0.45 0.1 60)" strokeWidth="2" strokeLinejoin="round" />
-              <ellipse cx="32" cy="36" rx="20" ry="3" fill="oklch(0.65 0.13 60)" opacity="0.6" />
-            </svg>
-            <span className="mt-3 text-xl">📖</span>
+          <div className="relative grid h-11 w-11 place-items-center rounded-xl bg-primary shadow-card">
+            <span className="text-xl">📖</span>
           </div>
-          <div className="text-left leading-none">
-            <div className="font-display text-xl font-extrabold tracking-tight text-white sm:text-2xl">
-              Tiếng Việt{" "}
-              <span className="italic text-yellow">Online</span>
-            </div>
+          <div className="text-left leading-tight">
+            <div className="font-display text-base font-extrabold text-primary leading-none">Vui Học</div>
+            <div className="font-display text-base font-extrabold text-navy leading-none">Tiếng Việt</div>
           </div>
         </button>
 
-        {/* Tabs */}
-        <ul className="flex items-center gap-2">
-          {tabs.map(({ key, label, Icon, iconColor }) => {
+        {/* Nav tabs — centered */}
+        <ul className="hidden flex-1 items-center justify-center gap-1 md:flex">
+          {tabs.map(({ key, label, Icon }) => {
             const isActive = active === key;
             return (
               <li key={key}>
                 <button
                   onClick={() => onChange(key)}
                   className={[
-                    "flex items-center gap-2 rounded-2xl border-2 px-3 py-2.5 text-sm font-extrabold transition-all sm:px-5",
+                    "flex items-center gap-2 rounded-full px-4 py-2 text-sm font-bold transition-all",
                     isActive
-                      ? "bg-yellow border-[oklch(0.78_0.16_75)] text-navy shadow-glow-yellow scale-[1.04]"
-                      : "bg-white border-white text-navy hover:scale-[1.02] hover:shadow-card",
+                      ? "bg-primary text-white shadow-sm"
+                      : "text-foreground/70 hover:bg-muted hover:text-foreground",
                   ].join(" ")}
                 >
-                  <Icon
-                    className={`h-5 w-5 ${isActive ? "text-navy" : iconColor}`}
-                    strokeWidth={2.5}
-                  />
-                  <span className="hidden sm:inline">{label}</span>
+                  <Icon className="h-4 w-4" strokeWidth={2.5} />
+                  <span>{label}</span>
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+
+        {/* Right: search + login */}
+        <div className="ml-auto flex shrink-0 items-center gap-2">
+          <div className="hidden items-center gap-2 rounded-full border border-border bg-muted px-3 py-2 sm:flex">
+            <Search className="h-4 w-4 text-muted-foreground" strokeWidth={2} />
+            <input
+              type="text"
+              placeholder="Tìm bài học, chủ đề..."
+              className="w-40 bg-transparent text-sm text-foreground placeholder:text-muted-foreground focus:outline-none lg:w-52"
+            />
+          </div>
+          <button className="flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-bold text-white shadow-sm transition-all hover:bg-primary/90 hover:shadow-md">
+            <User className="h-4 w-4" strokeWidth={2.5} />
+            <span className="hidden sm:inline">Đăng nhập</span>
+          </button>
+        </div>
+
+        {/* Mobile nav toggle — small screens */}
+        <ul className="flex items-center gap-1 md:hidden">
+          {tabs.map(({ key, Icon }) => {
+            const isActive = active === key;
+            return (
+              <li key={key}>
+                <button
+                  onClick={() => onChange(key)}
+                  className={[
+                    "grid h-9 w-9 place-items-center rounded-full transition-all",
+                    isActive ? "bg-primary text-white" : "text-foreground/60 hover:bg-muted",
+                  ].join(" ")}
+                >
+                  <Icon className="h-4 w-4" strokeWidth={2.5} />
                 </button>
               </li>
             );

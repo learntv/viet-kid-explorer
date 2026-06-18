@@ -1,54 +1,94 @@
-import { Heart } from "lucide-react";
-import lotusBanner from "@/assets/lotus-banner.jpg";
-import cvcecLogo from "@/assets/cvcec.jpg.asset.json";
-import bngLogo from "@/assets/bo-ngoai-giao.jpg.asset.json";
+import { Facebook, Youtube, Twitter, Music2, Send } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="relative mt-16">
-      {/* Banner section with lotus background, fading into page bg at top */}
-      <div
-        className="relative w-full bg-cover bg-center pb-8 sm:pb-8"
-        style={{ backgroundImage: `url(${lotusBanner})` }}
-      >
-        {/* Top fade gradient blending into page background */}
-        <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[oklch(0.97_0.01_250)] to-transparent pointer-events-none [background-image:linear-gradient(to_bottom,in_oklch,oklch(0.97_0.01_250),transparent)]" />
-
-        <div className="relative mx-auto max-w-4xl px-4 pt-10 sm:px-6 sm:pt-12">
-          {/* Dashed frame containing logos — narrow width, tight wrap */}
-          <div className="relative mx-auto w-fit rounded-full border-2 border-dashed border-primary/50 bg-white/40 px-6 pt-7 pb-4 backdrop-blur-sm sm:px-8 sm:pt-8 sm:pb-5">
-            {/* Caption overlapping the top border */}
-            {/* Caption overlapping the top border */}
-            <div className="absolute -top-3.5 left-1/2 flex -translate-x-1/2 items-center gap-2 whitespace-nowrap px-3 bg-white rounded-full">
-              {/* Thay đổi: Thêm `bg-white` (hoặc `bg-[#f8f9fa]` tùy màu nền của bạn) và đảm bảo có `px-3` để tạo khoảng trống che viền */}
-              <Heart className="h-4 w-4 fill-pink text-pink" />
-              <p className="font-display text-sm font-extrabold text-navy sm:text-base">
-                Hai cơ quan bảo trợ và đồng hành
-              </p>
-              <Heart className="h-4 w-4 fill-pink text-pink" />
+    <footer className="mt-16 border-t border-border">
+      {/* Main footer grid */}
+      <div className="bg-[oklch(0.98_0.008_75)] py-12">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-4 sm:px-6 md:grid-cols-4">
+          {/* Column 1: Brand */}
+          <div className="flex flex-col gap-4">
+            <div className="flex items-center gap-2.5">
+              <div className="grid h-10 w-10 place-items-center rounded-xl bg-primary shadow-card">
+                <span className="text-lg">📖</span>
+              </div>
+              <div className="leading-tight">
+                <div className="font-display text-sm font-extrabold text-primary leading-none">Vui Học</div>
+                <div className="font-display text-sm font-extrabold text-navy leading-none">Tiếng Việt</div>
+              </div>
             </div>
+            <p className="text-sm leading-relaxed text-muted-foreground">
+              Nền tảng học tiếng Việt dành cho trẻ em Việt Nam tiêu học ở trong và ngoài nước.
+            </p>
+            <div className="flex items-center gap-3">
+              <a href="#" aria-label="Facebook" className="grid h-8 w-8 place-items-center rounded-full bg-white shadow-card transition-transform hover:scale-110 hover:shadow-md text-[#1877F2]">
+                <Facebook className="h-4 w-4" strokeWidth={2} />
+              </a>
+              <a href="#" aria-label="YouTube" className="grid h-8 w-8 place-items-center rounded-full bg-white shadow-card transition-transform hover:scale-110 hover:shadow-md text-[#FF0000]">
+                <Youtube className="h-4 w-4" strokeWidth={2} />
+              </a>
+              <a href="#" aria-label="Twitter/X" className="grid h-8 w-8 place-items-center rounded-full bg-white shadow-card transition-transform hover:scale-110 hover:shadow-md text-foreground">
+                <Twitter className="h-4 w-4" strokeWidth={2} />
+              </a>
+              <a href="#" aria-label="TikTok" className="grid h-8 w-8 place-items-center rounded-full bg-white shadow-card transition-transform hover:scale-110 hover:shadow-md text-foreground">
+                <Music2 className="h-4 w-4" strokeWidth={2} />
+              </a>
+            </div>
+          </div>
 
-            {/* Logos row */}
-            <div className="flex items-center justify-center gap-6 sm:gap-10">
-              <img
-                src={bngLogo.url}
-                alt="Bộ Ngoại Giao — Uỷ ban Nhà nước về người Việt Nam ở nước ngoài"
-                className="h-16 w-auto object-contain sm:h-20"
+          {/* Column 2: About */}
+          <div>
+            <h4 className="mb-4 font-display text-sm font-extrabold text-navy">Về chúng tôi</h4>
+            <ul className="flex flex-col gap-2.5">
+              {["Giới thiệu", "Hướng dẫn sử dụng", "Câu hỏi thường gặp", "Liên hệ"].map((link) => (
+                <li key={link}>
+                  <a href="#" className="text-sm text-muted-foreground transition-colors hover:text-primary">
+                    {link}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Column 3: Policy */}
+          <div>
+            <h4 className="mb-4 font-display text-sm font-extrabold text-navy">Chính sách</h4>
+            <ul className="flex flex-col gap-2.5">
+              {["Điều khoản sử dụng", "Chính sách bảo mật", "Chính sách nội dung"].map((link) => (
+                <li key={link}>
+                  <a href="#" className="text-sm text-muted-foreground transition-colors hover:text-primary">
+                    {link}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Column 4: Newsletter */}
+          <div>
+            <h4 className="mb-2 font-display text-sm font-extrabold text-navy">Kết nối với chúng tôi</h4>
+            <p className="mb-4 text-sm text-muted-foreground">
+              Nhận tin tức và tài liệu mới nhất cho bé yêu của bạn.
+            </p>
+            <div className="flex gap-2">
+              <input
+                type="email"
+                placeholder="Nhập email của bạn"
+                className="flex-1 rounded-full border border-border bg-white px-4 py-2 text-sm placeholder:text-muted-foreground focus:border-primary focus:outline-none"
               />
-              <img
-                src={cvcecLogo.url}
-                alt="Hội đồng Văn hoá & Giáo dục Canada - Việt Nam"
-                className="h-16 w-auto object-contain sm:h-20"
-              />
+              <button className="flex items-center gap-1.5 rounded-full bg-primary px-4 py-2 text-sm font-bold text-white transition-all hover:bg-primary/90">
+                <Send className="h-3.5 w-3.5" strokeWidth={2.5} />
+                <span>Đăng ký</span>
+              </button>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Copyright */}
+      {/* Copyright bar */}
       <div className="bg-white py-4">
         <p className="text-center text-xs text-muted-foreground">
-          © {new Date().getFullYear()} Tiếng Việt Online — Dự án phi lợi nhuận vì cộng đồng người Việt ở nước ngoài.
+          © {new Date().getFullYear()} Vui Học Tiếng Việt. Tất cả quyền được bảo lưu.
         </p>
       </div>
     </footer>
