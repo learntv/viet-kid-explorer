@@ -2,7 +2,6 @@ import { useMemo, useState } from "react";
 import { TOPICS, getStagesForTopic } from "@/data/topics";
 import { RoadmapMap } from "@/components/learning/RoadmapMap";
 import { LessonCard } from "@/components/learning/LessonCard";
-import { LearningHero } from "@/components/learning/LearningHero";
 
 export function LearningTab() {
   const [currentTopicIndex, setCurrentTopicIndex] = useState(0);
