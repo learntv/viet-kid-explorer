@@ -38,23 +38,23 @@ export function InfoHero() {
   ];
 
   return (
-    <section className="w-full px-4 pt-6 sm:px-6 lg:px-10">
-      <div className="mx-auto max-w-7xl">
+    <section className="w-full px-4 pt-6 sm:px-6">
+      <div className="mx-auto max-w-6xl">
         {/* Hero banner */}
         <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-amber-50 via-orange-50 to-rose-50 shadow-sm ring-1 ring-amber-100/60">
-          <div className="grid grid-cols-1 items-center gap-6 p-6 sm:p-10 lg:grid-cols-2 lg:gap-4 lg:p-12">
+          <div className="grid grid-cols-1 items-center gap-4 p-4 sm:p-6 lg:grid-cols-2 lg:gap-4 lg:p-8">
             <div className="relative z-10">
-              <h1 className="font-serif text-2xl font-bold leading-tight text-red-800 sm:text-5xl lg:text-6xl">
+              <h1 className="font-serif text-xl font-bold leading-tight text-red-800 sm:text-3xl lg:text-4xl">
                 THÔNG TIN DỰ ÁN
               </h1>
-              <p className="mt-4 text-xl font-medium text-stone-700 sm:text-2xl">Trường Tiếng Việt Của Em</p>
-              <p className="mt-4 max-w-md text-base text-stone-600 sm:text-lg">
+              <p className="mt-2 text-base font-medium text-stone-700 sm:text-lg">Trường Tiếng Việt Của Em</p>
+              <p className="mt-2 max-w-md text-sm text-stone-600 sm:text-base">
                 Hành trình gìn giữ và lan tỏa tiếng Việt, văn hóa Việt đến với thế hệ trẻ kiều bào trên khắp thế giới.
               </p>
 
               <button
                 type="button"
-                className="mt-6 inline-flex items-center gap-2 rounded-full bg-red-700 px-6 py-3 text-base font-semibold text-white shadow-md transition hover:bg-red-800 hover:shadow-lg"
+                className="mt-4 inline-flex items-center gap-2 rounded-full bg-red-700 px-5 py-2 text-sm font-semibold text-white shadow-md transition hover:bg-red-800 hover:shadow-lg"
                 onClick={() => {
                   document.getElementById("info-cards-start")?.scrollIntoView({ behavior: "smooth" });
                 }}
@@ -63,7 +63,7 @@ export function InfoHero() {
                 <ArrowRight className="h-5 w-5" />
               </button>
 
-              <div className="mt-6 flex items-center gap-3">
+              <div className="mt-4 flex items-center gap-3">
                 <div className="flex -space-x-2">
                   {["bg-yellow-300", "bg-rose-300", "bg-emerald-300", "bg-sky-300"].map((c, i) => (
                     <div

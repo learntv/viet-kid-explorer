@@ -1,11 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { InfoTab } from "@/components/tabs/InfoTab";
-import { LearningTab } from "@/components/tabs/LearningTab";
-import { ComingSoonTab } from "@/components/tabs/ComingSoonTab";
-import type { TabKey } from "@/lib/tabs";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -28,20 +24,12 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
-  const [tab, setTab] = useState<TabKey>("info");
-
   return (
     <div className="flex min-h-screen flex-col">
-      <Navbar active={tab} onChange={setTab} />
-
-      <main className="flex-1 transition-all duration-300">
-        <div key={tab} className="animate-in fade-in slide-in-from-bottom-2 duration-300">
-          {tab === "info" && <InfoTab />}
-          {tab === "learn" && <LearningTab />}
-          {tab === "kids" && <ComingSoonTab />}
-        </div>
+      <Navbar />
+      <main className="flex-1 animate-in fade-in slide-in-from-bottom-2 duration-300">
+        <InfoTab />
       </main>
-
       <Footer />
     </div>
   );
