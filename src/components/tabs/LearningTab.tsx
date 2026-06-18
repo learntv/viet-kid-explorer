@@ -35,8 +35,6 @@ export function LearningTab() {
 
   return (
     <section className="w-full pb-10">
-      <LearningHero />
-
       {/* Full-width map area with overlapping lesson card */}
       <div id="roadmap-start" className="relative mt-8 w-full">
         <RoadmapMap
