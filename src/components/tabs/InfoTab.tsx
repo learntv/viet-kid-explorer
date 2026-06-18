@@ -1,4 +1,5 @@
 import { BookMarked, Copyright, Heart, Info, Network, ShieldCheck } from "lucide-react";
+import { InfoHero } from "./InfoHero";
 import { InfoCard } from "./InfoCard";
 
 const CARDS = [
@@ -34,20 +35,23 @@ const CARDS = [
 
 export function InfoTab() {
   return (
-    <section className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-14">
-      <header className="mb-8 flex flex-col items-center text-center sm:mb-12">
-        <div className="flex items-center gap-3">
-          <span className="grid h-11 w-11 place-items-center rounded-2xl bg-primary text-white shadow-card">
-            <Info className="h-5 w-5" strokeWidth={2.5} />
-          </span>
-          <h2 className="font-display text-3xl font-extrabold text-navy sm:text-5xl">
-            Giới thiệu
-          </h2>
-        </div>
-        <p className="mx-auto mt-3 max-w-2xl text-base text-foreground/70">
-          Đôi nét về sứ mệnh, đối tác và bản quyền của Trường Tiếng Việt Của Em.
-        </p>
-      </header>
+    <section className="w-full pb-10">
+      <InfoHero />
+
+      <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-14">
+        <header className="mb-8 flex flex-col items-center text-center sm:mb-12">
+          <div className="flex items-center gap-3">
+            <span className="grid h-11 w-11 place-items-center rounded-2xl bg-primary text-white shadow-card">
+              <Info className="h-5 w-5" strokeWidth={2.5} />
+            </span>
+            <h2 className="font-display text-3xl font-extrabold text-navy sm:text-5xl">
+              Giới thiệu
+            </h2>
+          </div>
+          <p className="mx-auto mt-3 max-w-2xl text-base text-foreground/70">
+            Đôi nét về sứ mệnh, đối tác và bản quyền của Trường Tiếng Việt Của Em.
+          </p>
+        </header>
 
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
         {CARDS.map((c) => (
