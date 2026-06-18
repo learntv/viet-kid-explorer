@@ -7,7 +7,7 @@ const tabs: {
   Icon: typeof Home;
 }[] = [
   { key: "info", label: "Trang chủ", Icon: Home },
-  { key: "learn", label: "Vui học Tiếng Việt", Icon: BookOpen },
+  { key: "learn", label: "Học Tiếng Việt", Icon: BookOpen },
   { key: "kids", label: "Sản phẩm của em", Icon: Star },
 ];
 
@@ -30,8 +30,8 @@ export function Navbar({
             <span className="text-xl">📖</span>
           </div>
           <div className="text-left leading-tight">
-            <div className="font-display text-base font-extrabold text-primary leading-none">Vui Học</div>
-            <div className="font-display text-base font-extrabold text-navy leading-none">Tiếng Việt</div>
+            <div className="font-display text-base font-extrabold text-primary leading-none">Trường Tiếng Việt</div>
+            <div className="font-display text-base font-extrabold text-navy leading-none">Của Em</div>
           </div>
         </button>
 

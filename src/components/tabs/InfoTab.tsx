@@ -45,7 +45,7 @@ export function InfoTab() {
           </h2>
         </div>
         <p className="mx-auto mt-3 max-w-2xl text-base text-foreground/70">
-          Đôi nét về sứ mệnh, đối tác và bản quyền của Tiếng Việt Online.
+          Đôi nét về sứ mệnh, đối tác và bản quyền của Trường Tiếng Việt Của Em.
         </p>
       </header>
 
@@ -69,7 +69,7 @@ export function InfoTab() {
           và định hướng. Chúng tôi xin gửi lời tri ân sâu sắc tới các Đại sứ
           quán, các cơ quan ban ngành tại Việt Nam và Canada, cùng Mạng lưới
           giảng dạy tiếng Việt đã tạo điều kiện và hỗ trợ quý báu để dự án
-          &quot;Tiếng Việt Online&quot; được hoàn thiện và đi vào vận hành. Sự
+          &quot;Trường Tiếng Việt Của Em&quot; được hoàn thiện và đi vào vận hành. Sự
           đồng hành của quý vị là nguồn động lực to lớn giúp chúng tôi gìn giữ
           và lan tỏa ngôn ngữ, văn hóa Việt đến với thế hệ trẻ tại Canada nói
           riêng và trên toàn thế giới nói chung.

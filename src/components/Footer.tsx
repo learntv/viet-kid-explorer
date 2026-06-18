@@ -15,8 +15,8 @@ export function Footer() {
                 <span className="text-lg">📖</span>
               </div>
               <div className="leading-tight">
-                <div className="font-display text-sm font-extrabold text-primary leading-none">Vui Học</div>
-                <div className="font-display text-sm font-extrabold text-navy leading-none">Tiếng Việt</div>
+                <div className="font-display text-sm font-extrabold text-primary leading-none">Trường Tiếng Việt</div>
+                <div className="font-display text-sm font-extrabold text-navy leading-none">Của Em</div>
               </div>
             </div>
             <p className="text-sm leading-relaxed text-muted-foreground">
@@ -35,6 +35,18 @@ export function Footer() {
               <a href="#" aria-label="TikTok" className="grid h-8 w-8 place-items-center rounded-full bg-white shadow-card transition-transform hover:scale-110 hover:shadow-md text-foreground">
                 <Music2 className="h-4 w-4" strokeWidth={2} />
               </a>
+            </div>
+            <div className="flex items-center gap-3">
+              <img
+                src={boLogo}
+                alt="Bộ Ngoại giao"
+                className="h-16 w-auto rounded-md object-contain shadow-sm"
+              />
+              <img
+                src={cvcecLogo}
+                alt="CVCEC"
+                className="h-16 w-auto rounded-md object-contain shadow-sm"
+              />
             </div>
           </div>
 
@@ -90,24 +102,8 @@ export function Footer() {
       {/* Copyright bar */}
       <div className="bg-white py-4">
         <div className="mx-auto flex max-w-7xl flex-col items-center gap-3 px-4 sm:px-6">
-          <div className="flex items-center gap-4">
-            <a href="#" target="_blank" rel="noopener noreferrer">
-              <img
-                src={boLogo}
-                alt="Bộ Ngoại giao"
-                className="h-12 w-auto rounded-md object-contain shadow-sm"
-              />
-            </a>
-            <a href="#" target="_blank" rel="noopener noreferrer">
-              <img
-                src={cvcecLogo}
-                alt="CVCEC"
-                className="h-12 w-auto rounded-md object-contain shadow-sm"
-              />
-            </a>
-          </div>
           <p className="text-center text-xs text-muted-foreground">
-            © {new Date().getFullYear()} Vui Học Tiếng Việt. Tất cả quyền được bảo lưu.
+            © {new Date().getFullYear()} Trường Tiếng Việt Của Em. Tất cả quyền được bảo lưu.
           </p>
         </div>
       </div>

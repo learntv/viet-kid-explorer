@@ -10,13 +10,13 @@ import type { TabKey } from "@/lib/tabs";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Tiếng Việt Online — Học tiếng Việt cùng Trâu con đội nón lá" },
+      { title: "Trường Tiếng Việt Của Em — Học tiếng Việt cùng Trâu con đội nón lá" },
       {
         name: "description",
         content:
           "Hành trình học tiếng Việt vui nhộn dành cho trẻ em kiều bào 5–12 tuổi, dưới sự bảo trợ của UBNVONN – Bộ Ngoại giao.",
       },
-      { property: "og:title", content: "Tiếng Việt Online" },
+      { property: "og:title", content: "Trường Tiếng Việt Của Em" },
       {
         property: "og:description",
         content:
