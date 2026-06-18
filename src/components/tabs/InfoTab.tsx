@@ -79,6 +79,7 @@ export function InfoTab() {
           riêng và trên toàn thế giới nói chung.
         </p>
       </article>
+      </div>
     </section>
   );
 }
