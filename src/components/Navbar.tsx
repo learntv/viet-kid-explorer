@@ -1,5 +1,6 @@
 import { BookOpen, Home, Star, User } from "lucide-react";
 import { Link, useRouterState } from "@tanstack/react-router";
+import iconLogo from "@/assets/icon.png";
 
 const tabs: {
   to: "/" | "/hoc-tieng-viet" | "/san-pham-cua-em";
@@ -23,9 +24,7 @@ export function Navbar() {
           to="/"
           className="flex shrink-0 items-center gap-2.5 transition-transform hover:scale-[1.02]"
         >
-          <div className="relative grid h-11 w-11 place-items-center rounded-xl bg-primary shadow-card">
-            <span className="text-xl">📖</span>
-          </div>
+          <img src={iconLogo} alt="Logo" className="h-16 w-16 rounded-xl object-cover shadow-card" />
           <div className="text-left leading-tight">
             <div className="font-display text-base font-extrabold text-primary leading-none">Trường Tiếng Việt</div>
             <div className="font-display text-base font-extrabold text-navy leading-none">Của Em</div>
