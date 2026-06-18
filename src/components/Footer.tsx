@@ -1,4 +1,6 @@
 import { Facebook, Youtube, Twitter, Music2, Send } from "lucide-react";
+import boNgoaiGiao from "@/assets/bo-ngoai-giao.png";
+import cvcec from "@/assets/cvcec.png";
 
 export function Footer() {
   return (
