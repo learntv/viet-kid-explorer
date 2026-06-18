@@ -41,7 +41,7 @@ export function InfoTab() {
             <Info className="h-5 w-5" strokeWidth={2.5} />
           </span>
           <h2 className="font-display text-3xl font-extrabold text-navy sm:text-5xl">
-            Thông tin
+            Giới thiệu
           </h2>
         </div>
         <p className="mx-auto mt-3 max-w-2xl text-base text-foreground/70">
