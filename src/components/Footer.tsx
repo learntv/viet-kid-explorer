@@ -1,4 +1,6 @@
 import { Facebook, Youtube, Twitter, Music2, Send } from "lucide-react";
+import boLogo from "@/assets/bo-ngoai-giao.jpg";
+import cvcecLogo from "@/assets/cvcec.jpg";
 
 export function Footer() {
   return (
@@ -87,9 +89,27 @@ export function Footer() {
 
       {/* Copyright bar */}
       <div className="bg-white py-4">
-        <p className="text-center text-xs text-muted-foreground">
-          © {new Date().getFullYear()} Vui Học Tiếng Việt. Tất cả quyền được bảo lưu.
-        </p>
+        <div className="mx-auto flex max-w-7xl flex-col items-center gap-3 px-4 sm:px-6">
+          <div className="flex items-center gap-4">
+            <a href="#" target="_blank" rel="noopener noreferrer">
+              <img
+                src={boLogo}
+                alt="Bộ Ngoại giao"
+                className="h-12 w-auto rounded-md object-contain shadow-sm"
+              />
+            </a>
+            <a href="#" target="_blank" rel="noopener noreferrer">
+              <img
+                src={cvcecLogo}
+                alt="CVCEC"
+                className="h-12 w-auto rounded-md object-contain shadow-sm"
+              />
+            </a>
+          </div>
+          <p className="text-center text-xs text-muted-foreground">
+            © {new Date().getFullYear()} Vui Học Tiếng Việt. Tất cả quyền được bảo lưu.
+          </p>
+        </div>
       </div>
     </footer>
   );
