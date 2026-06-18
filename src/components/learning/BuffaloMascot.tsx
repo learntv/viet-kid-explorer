@@ -1,4 +1,4 @@
-import trauConAsset from "@/assets/trau-con.png.asset.json";
+import trauConAsset from "@/assets/trau-con.png";
 
 export function BuffaloMascot({
   xPercent,
