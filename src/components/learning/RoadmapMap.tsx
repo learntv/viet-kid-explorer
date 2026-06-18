@@ -2,13 +2,13 @@ import type { Topic } from "@/data/topics";
 import { BuffaloMascot } from "./BuffaloMascot";
 import { StageNode } from "./StageNode";
 import halongScene from "@/assets/halong-scene.jpg";
-import laco01 from "@/assets/laco01.png.asset.json";
-import laco02 from "@/assets/laco02.png.asset.json";
-import laco03 from "@/assets/laco03.png.asset.json";
-import laco04 from "@/assets/laco04.png.asset.json";
-import laco05 from "@/assets/laco05.png.asset.json";
+import laco01 from "@/assets/laco01.png";
+import laco02 from "@/assets/laco02.png";
+import laco03 from "@/assets/laco03.png";
+import laco04 from "@/assets/laco04.png";
+import laco05 from "@/assets/laco05.png";
 
-const FLAGS = [laco01.url, laco02.url, laco03.url, laco04.url, laco05.url];
+const FLAGS = [laco01, laco02, laco03, laco04, laco05];
 
 // Positions in % within the map area
 const NODE_POSITIONS = [
