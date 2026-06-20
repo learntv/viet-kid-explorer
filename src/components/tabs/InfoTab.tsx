@@ -69,7 +69,7 @@ export function InfoTab() {
         </div>
         <p className="mt-4 text-center text-[15px] leading-relaxed text-foreground/85 sm:text-base">
           Ban quản lý dự án xin được gửi lời cảm ơn chân thành tới Ủy ban Nhà
-          nước về người Việt Nam ở nước ngoài – Bộ Ngoại giao đã luôn đồng hành
+          nước về người Việt Nam ở nước ngoài - Bộ Ngoại giao&nbsp;nước Cộng hòa xã hội chủ nghĩa Việt Nam đã luôn đồng hành
           và định hướng. Chúng tôi xin gửi lời tri ân sâu sắc tới các Đại sứ
           quán, các cơ quan ban ngành tại Việt Nam và Canada, cùng Mạng lưới
           giảng dạy tiếng Việt đã tạo điều kiện và hỗ trợ quý báu để dự án
