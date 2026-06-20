@@ -85,8 +85,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:card", content: "summary" },
       { name: "twitter:title", content: "Trường Tiếng Việt Của Em" },
       { name: "twitter:description", content: "Hành trình học tiếng Việt vui nhộn dành cho trẻ em kiều bào." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/3c938d14-0109-4bb8-8c7b-9dd865240b00/id-preview-8c9c28a0--e9fab42d-2f13-4995-9311-aa18c0639fa5.lovable.app-1781706450470.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/3c938d14-0109-4bb8-8c7b-9dd865240b00/id-preview-8c9c28a0--e9fab42d-2f13-4995-9311-aa18c0639fa5.lovable.app-1781706450470.png" },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/78cb08d2-33c6-45f3-bf18-b8105435a1ae" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/78cb08d2-33c6-45f3-bf18-b8105435a1ae" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
