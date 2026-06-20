@@ -14,7 +14,7 @@ export function InfoCard({
   accent,
 }: {
   heading: string;
-  body: string;
+  body: React.ReactNode;
   Icon: LucideIcon;
   accent: keyof typeof accentMap;
 }) {

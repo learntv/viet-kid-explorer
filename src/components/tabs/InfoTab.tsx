@@ -26,8 +26,13 @@ const CARDS = [
   },
   {
     heading: "Bản quyền",
-    body:
-      "Dự án được bảo hộ bản quyền bởi đồng tác giả: Phan Thị Quỳnh Trang - Nguyễn Trần Thanh Hải - Nguyễn Phương Mai.",
+    body: (
+      <>
+        Dự án được bảo hộ bản quyền bởi đồng tác giả:
+        <br />
+        Phan Thị Quỳnh Trang - Nguyễn Trần Thanh Hải - Đỗ Thị Phương Mai - Trần Thanh Phúc - Trần Văn Nhật.
+      </>
+    ),
     Icon: Copyright,
     accent: "orange" as const,
   },
