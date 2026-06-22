@@ -6,7 +6,8 @@ export type LessonSection = {
   id: string;
   type: "Tu_Ngu" | "Hoi_Thoai" | "Hoc_Chu" | "Tieng_Viet_Vui";
   section_order: number;
-  content_json: Record<string, unknown>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  content_json: any;
 };
 
 export type LessonWithSections = {
