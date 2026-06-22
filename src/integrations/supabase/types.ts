@@ -14,7 +14,68 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      lesson_sections: {
+        Row: {
+          content_json: Json
+          created_at: string
+          id: string
+          lesson_id: string
+          section_order: number
+          type: string
+        }
+        Insert: {
+          content_json?: Json
+          created_at?: string
+          id?: string
+          lesson_id: string
+          section_order?: number
+          type: string
+        }
+        Update: {
+          content_json?: Json
+          created_at?: string
+          id?: string
+          lesson_id?: string
+          section_order?: number
+          type?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "lesson_sections_lesson_id_fkey"
+            columns: ["lesson_id"]
+            isOneToOne: false
+            referencedRelation: "lessons"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      lessons: {
+        Row: {
+          book_level: number
+          cover_image: string | null
+          created_at: string
+          id: string
+          lesson_order: number
+          title: string
+        }
+        Insert: {
+          book_level?: number
+          cover_image?: string | null
+          created_at?: string
+          id?: string
+          lesson_order?: number
+          title: string
+        }
+        Update: {
+          book_level?: number
+          cover_image?: string | null
+          created_at?: string
+          id?: string
+          lesson_order?: number
+          title?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
