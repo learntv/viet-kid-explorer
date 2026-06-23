@@ -11,7 +11,6 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
-import { VietnamSceneBackdrop } from "../components/VietnamSceneBackdrop";
 
 function NotFoundComponent() {
   return (
@@ -124,7 +123,6 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <VietnamSceneBackdrop />
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
     </QueryClientProvider>
