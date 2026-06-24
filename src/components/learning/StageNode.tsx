@@ -1,10 +1,33 @@
-import { Check } from "lucide-react";
+import { Check, Star } from "lucide-react";
+
+const STAGE_COLORS = [
+  {
+    ring: "ring-green-400",
+    bg: "bg-green-500",
+    border: "border-green-400",
+    text: "text-green-700",
+  },
+  { ring: "ring-sky-400", bg: "bg-sky-500", border: "border-sky-400", text: "text-sky-700" },
+  {
+    ring: "ring-purple-400",
+    bg: "bg-purple-500",
+    border: "border-purple-400",
+    text: "text-purple-700",
+  },
+  {
+    ring: "ring-amber-400",
+    bg: "bg-amber-500",
+    border: "border-amber-400",
+    text: "text-amber-700",
+  },
+  { ring: "ring-pink-400", bg: "bg-pink-500", border: "border-pink-400", text: "text-pink-700" },
+];
 
 export function StageNode({
   index,
   xPercent,
   yPercent,
-  flagSrc,
+  title,
   isCurrent,
   isCompleted,
   onClick,
@@ -12,53 +35,60 @@ export function StageNode({
   index: number;
   xPercent: number;
   yPercent: number;
-  flagSrc: string;
+  title: string;
   isCurrent: boolean;
   isCompleted: boolean;
   onClick: () => void;
 }) {
-  const size = isCurrent ? 100 : 85;
+  const color = STAGE_COLORS[index % STAGE_COLORS.length];
+  const size = isCurrent ? 76 : 68;
 
   return (
     <button
       onClick={onClick}
-      className="absolute z-10 -translate-x-1/2 -translate-y-1/2 transition-transform hover:scale-110 focus:outline-none"
+      className="absolute z-10 -translate-x-1/2 -translate-y-1/2 transition-transform hover:scale-105 focus:outline-none"
       style={{ left: `${xPercent}%`, top: `${yPercent}%` }}
       aria-label={`Chặng ${index + 1}`}
     >
-      <div className="flex flex-col items-center gap-1.5">
-        <div className="relative" style={{ width: size, height: size }}>
-          <img
-            src={flagSrc}
-            alt={`Lá cờ chặng ${index + 1}`}
-            width={size}
-            height={size}
-            className={[
-              "h-full w-full object-contain drop-shadow-[0_10px_16px_rgba(0,0,0,0.35)]",
-              isCurrent ? "animate-bob" : "",
-            ].join(" ")}
-          />
-          {/* Ground shadow */}
-          <div
-            className="absolute -bottom-1 left-1/2 h-2 -translate-x-1/2 rounded-[100%] bg-black/20 blur-sm"
-            style={{ width: size * 0.7 }}
-          />
-          {isCompleted && (
-            <span className="absolute -right-1 -top-1 grid h-7 w-7 place-items-center rounded-full bg-green text-navy shadow-card ring-2 ring-white">
-              <Check className="h-4 w-4" strokeWidth={3.5} />
-            </span>
+      <div className="flex flex-col items-center gap-2">
+        <div
+          className={[
+            "grid place-items-center rounded-full text-white shadow-card ring-4 ring-white",
+            color.bg,
+            isCurrent ? "ring-offset-2 ring-offset-white/0" : "",
+          ].join(" ")}
+          style={{ width: size, height: size }}
+        >
+          {isCompleted ? (
+            <Check className="h-8 w-8" strokeWidth={3.5} />
+          ) : (
+            <span className="font-display text-2xl font-extrabold">{index + 1}</span>
           )}
         </div>
-        <span
+
+        <div
           className={[
-            "rounded-full px-2.5 py-0.5 font-display text-xs font-extrabold shadow-card",
-            isCurrent
-              ? "bg-yellow text-navy ring-2 ring-white"
-              : "bg-white/95 text-navy",
+            "flex flex-col items-center gap-1 rounded-xl border-2 bg-white/95 px-3 py-1.5 text-center shadow-card backdrop-blur",
+            color.border,
           ].join(" ")}
         >
-          Chặng {index + 1}
-        </span>
+          <span
+            className={["font-display text-xs font-extrabold leading-tight", color.text].join(" ")}
+          >
+            Chặng {index + 1}
+          </span>
+          <span className="text-[11px] font-bold leading-tight text-stone-700">{title}</span>
+          <div className="flex items-center gap-0.5">
+            {Array.from({ length: 3 }).map((_, i) => (
+              <Star
+                key={i}
+                className={
+                  isCompleted ? "h-3 w-3 fill-yellow-400 text-yellow-400" : "h-3 w-3 text-stone-300"
+                }
+              />
+            ))}
+          </div>
+        </div>
       </div>
     </button>
   );

@@ -1,12 +1,6 @@
 import trauConAsset from "@/assets/trau-con.png";
 
-export function BuffaloMascot({
-  xPercent,
-  yPercent,
-}: {
-  xPercent: number;
-  yPercent: number;
-}) {
+export function BuffaloMascot({ xPercent, yPercent }: { xPercent: number; yPercent: number }) {
   return (
     <div
       className="pointer-events-none absolute z-20 -translate-x-1/2 transition-all duration-700 ease-in-out"

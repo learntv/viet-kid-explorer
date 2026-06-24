@@ -16,7 +16,7 @@ export type Topic = {
 
 export const STAGE_TEMPLATE: Omit<Stage, "id">[] = [
   {
-    title: "Làm quen",
+    title: "Khởi động",
     imageEmoji: "👋",
     sampleVocabulary: [
       { vi: "Xin chào!", en: "Hello!" },
@@ -27,18 +27,20 @@ export const STAGE_TEMPLATE: Omit<Stage, "id">[] = [
     ],
   },
   {
-    title: "Từ vựng",
+    title: "Làm quen",
     imageEmoji: "📚",
     sampleVocabulary: [
-      { vi: "Mẹ", en: "Mom" },
-      { vi: "Bố", en: "Dad" },
-      { vi: "Anh", en: "Older brother" },
-      { vi: "Chị", en: "Older sister" },
-      { vi: "Em", en: "Younger sibling" },
+      { vi: "ông", en: "Grandfather" },
+      { vi: "bà", en: "Grandmother" },
+      { vi: "bố", en: "Dad" },
+      { vi: "mẹ", en: "Mom" },
+      { vi: "anh", en: "Older brother" },
+      { vi: "chị", en: "Older sister" },
+      { vi: "em", en: "Younger sibling" },
     ],
   },
   {
-    title: "Hội thoại",
+    title: "Nhận biết",
     imageEmoji: "💬",
     sampleVocabulary: [
       { vi: "Bạn tên là gì?", en: "What is your name?" },
@@ -48,7 +50,7 @@ export const STAGE_TEMPLATE: Omit<Stage, "id">[] = [
     ],
   },
   {
-    title: "Luyện đọc",
+    title: "Luyện tập",
     imageEmoji: "📖",
     sampleVocabulary: [
       { vi: "Gia đình em có bốn người.", en: "My family has four people." },
@@ -57,7 +59,7 @@ export const STAGE_TEMPLATE: Omit<Stage, "id">[] = [
     ],
   },
   {
-    title: "Luyện viết",
+    title: "Vận dụng",
     imageEmoji: "✏️",
     sampleVocabulary: [
       { vi: "a, ă, â", en: "Vowels" },
@@ -69,14 +71,14 @@ export const STAGE_TEMPLATE: Omit<Stage, "id">[] = [
 ];
 
 const TOPIC_META: Omit<Topic, "id">[] = [
-  { title: "Chủ đề 1: Gia đình", emoji: "👨‍👩‍👧", accent: "primary" },
-  { title: "Chủ đề 2: Con vật", emoji: "🐰", accent: "green" },
-  { title: "Chủ đề 3: Cây cối", emoji: "🌳", accent: "green" },
-  { title: "Chủ đề 4: Nhà ở", emoji: "🏡", accent: "yellow" },
-  { title: "Chủ đề 5: Thời tiết", emoji: "🌤️", accent: "primary" },
-  { title: "Chủ đề 6: Đi chơi", emoji: "🎈", accent: "pink" },
-  { title: "Chủ đề 7: Trường học", emoji: "🏫", accent: "purple" },
-  { title: "Chủ đề 8: Văn hóa Việt", emoji: "🏯", accent: "pink" },
+  { title: "Chủ đề 1: Gia đình", emoji: "👨‍👩‍👧", accent: "purple" },
+  { title: "Chủ đề 2: Trường học", emoji: "🏫", accent: "primary" },
+  { title: "Chủ đề 3: Bạn bè", emoji: "🧑‍🤝‍🧑", accent: "green" },
+  { title: "Chủ đề 4: Đồ vật quanh em", emoji: "🧸", accent: "yellow" },
+  { title: "Chủ đề 5: Thiên nhiên", emoji: "🌳", accent: "green" },
+  { title: "Chủ đề 6: Quê hương – Đất nước", emoji: "🏞️", accent: "primary" },
+  { title: "Chủ đề 7: Nghề nghiệp", emoji: "👩‍⚕️", accent: "pink" },
+  { title: "Chủ đề 8: Thế giới quanh ta", emoji: "🌏", accent: "purple" },
 ];
 
 export const TOPICS: Topic[] = TOPIC_META.map((t, i) => ({

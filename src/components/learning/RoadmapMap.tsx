@@ -1,42 +1,57 @@
+import { Heart, Gift, Sparkles, Star, Volume2 } from "lucide-react";
 import type { Topic } from "@/data/topics";
 import { BuffaloMascot } from "./BuffaloMascot";
 import { StageNode } from "./StageNode";
 import halongScene from "@/assets/halong-scene.jpg";
-import laco01 from "@/assets/laco01.png";
-import laco02 from "@/assets/laco02.png";
-import laco03 from "@/assets/laco03.png";
-import laco04 from "@/assets/laco04.png";
-import laco05 from "@/assets/laco05.png";
-
-const FLAGS = [laco01, laco02, laco03, laco04, laco05];
 
 // Positions in % within the map area
 const NODE_POSITIONS = [
-  { x: 10, y: 55 },
-  { x: 28, y: 28 },
-  { x: 50, y: 48 },
-  { x: 72, y: 25 },
-  { x: 90, y: 50 },
+  { x: 10, y: 58 },
+  { x: 28, y: 30 },
+  { x: 50, y: 52 },
+  { x: 72, y: 26 },
+  { x: 90, y: 52 },
+];
+
+const TIPS = [
+  {
+    Icon: Heart,
+    iconBg: "bg-rose-100 text-rose-600",
+    lines: ["Học mỗi ngày một chút,", "Tiếng Việt thêm yêu hơn!"],
+  },
+  {
+    Icon: Star,
+    iconBg: "bg-yellow-100 text-yellow-600",
+    lines: ["Học vui – Hiểu sâu", "Tiến bộ mỗi ngày"],
+  },
+  {
+    Icon: Gift,
+    iconBg: "bg-orange-100 text-orange-600",
+    lines: ["Cố gắng hôm nay", "Tự tin ngày mai"],
+  },
 ];
 
 export function RoadmapMap({
   topic,
   topicIndex,
-  totalTopics,
+  stageTitles,
   currentStageIndex,
   completedStages,
   onSelectStage,
+  soundOn,
+  onToggleSound,
 }: {
   topic: Topic;
   topicIndex: number;
-  totalTopics: number;
+  stageTitles: string[];
   currentStageIndex: number;
   completedStages: Set<number>;
   onSelectStage: (i: number) => void;
+  soundOn: boolean;
+  onToggleSound: () => void;
 }) {
-  const currentPos = NODE_POSITIONS[currentStageIndex] ?? NODE_POSITIONS[0];
+  const bookNumber = topicIndex < 4 ? 1 : 2;
 
-  // Smooth Bezier path
   const pathD = NODE_POSITIONS.reduce((acc, p, i, arr) => {
     if (i === 0) return `M ${p.x} ${p.y}`;
     const prev = arr[i - 1];
@@ -45,57 +60,66 @@ export function RoadmapMap({
   }, "");
 
   return (
-    <div className="relative w-full overflow-hidden shadow-soft pb-32 sm:pb-40">
+    <div className="relative w-full overflow-hidden rounded-3xl shadow-soft">
       {/* Background scenery */}
       <img
         src={halongScene}
         alt="Phong cảnh Việt Nam — Vịnh Hạ Long và Hội An"
         width={1600}
-        height={896}
+        height={1100}
         className="absolute inset-0 h-full w-full object-cover"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-sky/30 via-transparent to-white/10" />
+      <div className="absolute inset-0 bg-gradient-to-b from-sky/60 via-transparent to-white/10" />
 
-      {/* Topic badge — top left */}
-      <div className="relative z-10 flex flex-wrap items-start justify-between gap-3 px-4 pt-4 sm:px-6 sm:pt-6">
-        <div className="flex items-center gap-2 rounded-2xl bg-white/95 px-3 py-2 shadow-card backdrop-blur">
-          <span className="text-xl">{topic.emoji}</span>
-          <div className="leading-tight">
-            <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">
-              Chủ đề {topicIndex + 1}/{totalTopics}
-            </p>
-            <p className="font-display text-sm font-extrabold text-navy">
-              {topic.title.split(":")[1]?.trim() || topic.title}
-            </p>
-          </div>
+      {/* Top bar — breadcrumb + audio toggle */}
+      <div className="relative z-20 flex flex-wrap items-center justify-between gap-3 px-4 pt-4 sm:px-6 sm:pt-6">
+        <div className="flex items-center gap-2 rounded-full bg-white/95 px-4 py-2 text-sm font-bold text-navy shadow-card backdrop-blur">
+          <span>Quyển {bookNumber}</span>
+          <span className="text-muted-foreground">›</span>
+          <span>Vui học Tiếng Việt</span>
         </div>
-        <div className="rounded-2xl bg-white/95 px-3 py-2 text-xs font-extrabold text-navy shadow-card backdrop-blur">
-          {completedStages.size}/5 chặng hoàn thành
-        </div>
+        <button
+          onClick={onToggleSound}
+          className="flex items-center gap-2 rounded-full bg-white/95 px-4 py-2 text-sm font-bold text-navy shadow-card backdrop-blur transition hover:scale-105"
+        >
+          <Volume2
+            className={["h-4 w-4", soundOn ? "text-primary" : "text-muted-foreground"].join(" ")}
+          />
+          Âm thanh
+        </button>
       </div>
 
-      {/* Title ribbon — centered */}
-      <div className="relative z-10 mx-auto mt-2 w-fit max-w-[90%]">
+      {/* Title */}
+      <div className="relative z-20 mx-auto mt-4 flex max-w-3xl items-center justify-center gap-2 px-4 text-center sm:mt-6">
+        <Sparkles className="h-7 w-7 shrink-0 text-yellow-400 sm:h-9 sm:w-9" />
+        <h1 className="font-display text-3xl font-extrabold text-primary [text-shadow:0_2px_0_white,0_-1px_0_white,2px_0_0_white,-2px_0_0_white] sm:text-5xl">
+          VUI HỌC TIẾNG VIỆT
+        </h1>
+        <Sparkles className="h-7 w-7 shrink-0 text-yellow-400 sm:h-9 sm:w-9" />
+      </div>
+
+      {/* Ribbon — Chủ đề */}
+      <div className="relative z-20 mx-auto mt-3 w-fit max-w-[90%]">
         <div className="relative">
-          {/* Ribbon body */}
-          <div className="relative rounded-2xl bg-gradient-to-b from-[oklch(0.88_0.15_80)] to-[oklch(0.75_0.18_55)] px-6 py-2.5 text-center shadow-card sm:px-10 sm:py-3">
+          <div className="relative rounded-2xl bg-gradient-to-b from-[oklch(0.88_0.15_80)] to-[oklch(0.75_0.18_55)] px-6 py-2 text-center shadow-card sm:px-10 sm:py-2.5">
             <div className="absolute inset-0 rounded-2xl ring-2 ring-white/60 ring-inset" />
-            <h2 className="relative font-display text-xl font-extrabold text-white drop-shadow-[0_2px_2px_rgba(120,60,0,0.5)] sm:text-2xl">
-              Hành trình Tiếng Việt
+            <h2 className="relative font-display text-lg font-extrabold text-white drop-shadow-[0_2px_2px_rgba(120,60,0,0.5)] sm:text-2xl">
+              {topic.title}
             </h2>
-            <p className="relative text-xs font-bold text-white/95 sm:text-sm">
-              Cùng Trâu con đội nón lá
-            </p>
           </div>
-          {/* Ribbon tails */}
           <div className="absolute -left-3 top-1/2 h-6 w-6 -translate-y-1/2 rotate-45 bg-[oklch(0.6_0.18_45)] opacity-70" />
           <div className="absolute -right-3 top-1/2 h-6 w-6 -translate-y-1/2 rotate-45 bg-[oklch(0.6_0.18_45)] opacity-70" />
         </div>
       </div>
 
+      {/* Progress pill */}
+      <div className="relative z-20 mx-auto mt-3 flex w-fit items-center gap-1.5 rounded-full bg-white/95 px-4 py-1.5 text-sm font-extrabold text-navy shadow-card backdrop-blur">
+        <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+        {completedStages.size} chặng / {NODE_POSITIONS.length} chặng
+      </div>
+
       {/* Roadmap area */}
-      <div className="relative mt-4 h-[320px] w-full sm:h-[360px]">
-        {/* Dotted path */}
+      <div className="relative mt-4 h-[340px] w-full sm:h-[380px]">
         <svg
           className="absolute inset-0 h-full w-full"
           viewBox="0 0 100 100"
@@ -112,25 +136,42 @@ export function RoadmapMap({
           />
         </svg>
 
-        {/* Stage nodes */}
         {NODE_POSITIONS.map((p, i) => (
           <StageNode
             key={i}
             index={i}
             xPercent={p.x}
             yPercent={p.y}
-            flagSrc={FLAGS[i]}
+            title={stageTitles[i]}
             isCurrent={i === currentStageIndex}
             isCompleted={completedStages.has(i)}
             onClick={() => onSelectStage(i)}
           />
         ))}
 
-        {/* Mascot — positioned to the left of the current flag */}
         <BuffaloMascot
-          xPercent={Math.max(6, currentPos.x - 5)}
-          yPercent={currentPos.y}
+          xPercent={Math.max(6, (NODE_POSITIONS[currentStageIndex]?.x ?? 10) - 6)}
+          yPercent={NODE_POSITIONS[currentStageIndex]?.y ?? 58}
         />
+      </div>
+
+      {/* Bottom tips row */}
+      <div className="relative z-20 grid grid-cols-1 gap-3 p-4 sm:grid-cols-3 sm:p-6">
+        {TIPS.map(({ Icon, iconBg, lines }, i) => (
+          <div
+            key={i}
+            className="flex items-center gap-3 rounded-2xl bg-white/95 px-4 py-3 shadow-card backdrop-blur"
+          >
+            <div className={`grid h-9 w-9 shrink-0 place-items-center rounded-full ${iconBg}`}>
+              <Icon className="h-5 w-5" />
+            </div>
+            <div className="text-xs font-bold leading-tight text-stone-700">
+              {lines.map((l, j) => (
+                <p key={j}>{l}</p>
+              ))}
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );

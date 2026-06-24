@@ -6,13 +6,21 @@ export function LearningHero() {
     {
       icon: BookOpen,
       iconBg: "bg-amber-100 text-amber-700",
-      title: <><span className="text-red-700">40</span> bài học</>,
+      title: (
+        <>
+          <span className="text-red-700">40</span> bài học
+        </>
+      ),
       desc: "Bám sát 2 quyển sách Vui học Tiếng Việt",
     },
     {
       icon: Flower2,
       iconBg: "bg-green-100 text-green-700",
-      title: <><span className="text-red-700">8</span> chủ đề</>,
+      title: (
+        <>
+          <span className="text-red-700">8</span> chủ đề
+        </>
+      ),
       desc: "Mỗi quyển có 4 chủ đề, mỗi chủ đề 5 bài học",
     },
     {
@@ -43,7 +51,8 @@ export function LearningHero() {
                 Yêu tiếng Việt – Hiểu văn hóa Việt
               </p>
               <p className="mt-4 max-w-md text-base text-stone-600 sm:text-lg">
-                Cùng khám phá tiếng Việt qua những bài học thú vị, gần gũi và đậm đà bản sắc dân tộc.
+                Cùng khám phá tiếng Việt qua những bài học thú vị, gần gũi và đậm đà bản sắc dân
+                tộc.
               </p>
 
               <button
@@ -91,7 +100,9 @@ export function LearningHero() {
               key={i}
               className="flex items-center gap-4 rounded-2xl bg-white p-5 shadow-sm ring-1 ring-stone-100"
             >
-              <div className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-full ${s.iconBg}`}>
+              <div
+                className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-full ${s.iconBg}`}
+              >
                 <s.icon className="h-7 w-7" />
               </div>
               <div className="min-w-0">
