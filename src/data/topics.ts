@@ -16,30 +16,29 @@ export type Topic = {
 
 export const STAGE_TEMPLATE: Omit<Stage, "id">[] = [
   {
-    title: "Khởi động",
-    imageEmoji: "🌟",
+    title: "Làm quen",
+    imageEmoji: "👋",
     sampleVocabulary: [
       { vi: "Xin chào!", en: "Hello!" },
       { vi: "Tớ là…", en: "I am…" },
+      { vi: "Tên tớ là…", en: "My name is…" },
       { vi: "Rất vui được gặp bạn", en: "Nice to meet you" },
       { vi: "Tạm biệt!", en: "Goodbye!" },
     ],
   },
   {
-    title: "Làm quen",
-    imageEmoji: "👨‍👩‍👧",
+    title: "Từ vựng",
+    imageEmoji: "📚",
     sampleVocabulary: [
-      { vi: "ông", en: "grandfather" },
-      { vi: "bà", en: "grandmother" },
-      { vi: "bố", en: "dad" },
-      { vi: "mẹ", en: "mom" },
-      { vi: "anh", en: "older brother" },
-      { vi: "chị", en: "older sister" },
-      { vi: "em", en: "younger sibling" },
+      { vi: "Mẹ", en: "Mom" },
+      { vi: "Bố", en: "Dad" },
+      { vi: "Anh", en: "Older brother" },
+      { vi: "Chị", en: "Older sister" },
+      { vi: "Em", en: "Younger sibling" },
     ],
   },
   {
-    title: "Nhận biết",
+    title: "Hội thoại",
     imageEmoji: "💬",
     sampleVocabulary: [
       { vi: "Bạn tên là gì?", en: "What is your name?" },
@@ -49,7 +48,7 @@ export const STAGE_TEMPLATE: Omit<Stage, "id">[] = [
     ],
   },
   {
-    title: "Luyện tập",
+    title: "Luyện đọc",
     imageEmoji: "📖",
     sampleVocabulary: [
       { vi: "Gia đình em có bốn người.", en: "My family has four people." },
@@ -58,16 +57,16 @@ export const STAGE_TEMPLATE: Omit<Stage, "id">[] = [
     ],
   },
   {
-    title: "Vận dụng",
+    title: "Luyện viết",
     imageEmoji: "✏️",
     sampleVocabulary: [
-      { vi: "Giới thiệu gia đình em", en: "Introduce my family" },
-      { vi: "Em có một em gái", en: "I have a little sister" },
-      { vi: "Cả nhà em rất vui", en: "My family is very happy" },
+      { vi: "a, ă, â", en: "Vowels" },
+      { vi: "b, c, d", en: "Consonants" },
+      { vi: "ba, bà, bá", en: "Tones practice" },
+      { vi: "mẹ yêu em", en: "Mom loves me" },
     ],
   },
 ];
-
 
 const TOPIC_META: Omit<Topic, "id">[] = [
   { title: "Chủ đề 1: Gia đình", emoji: "👨‍👩‍👧", accent: "primary" },
