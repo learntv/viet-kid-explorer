@@ -1,42 +1,28 @@
-import type { Topic } from "@/data/topics";
 import { BuffaloMascot } from "./BuffaloMascot";
 import { StageNode } from "./StageNode";
 import halongScene from "@/assets/halong-scene.jpg";
-import laco01 from "@/assets/laco01.png";
-import laco02 from "@/assets/laco02.png";
-import laco03 from "@/assets/laco03.png";
-import laco04 from "@/assets/laco04.png";
-import laco05 from "@/assets/laco05.png";
 
-const FLAGS = [laco01, laco02, laco03, laco04, laco05];
-
-// Positions in % within the map area
+// Positions in % within the map area (matches mockup arrangement)
 const NODE_POSITIONS = [
-  { x: 10, y: 55 },
-  { x: 28, y: 28 },
-  { x: 50, y: 48 },
-  { x: 72, y: 25 },
-  { x: 90, y: 50 },
+  { x: 10, y: 70 },
+  { x: 28, y: 45 },
+  { x: 50, y: 65 },
+  { x: 72, y: 42 },
+  { x: 90, y: 65 },
 ];
 
 export function RoadmapMap({
-  topic,
-  topicIndex,
-  totalTopics,
   currentStageIndex,
   completedStages,
   onSelectStage,
 }: {
-  topic: Topic;
-  topicIndex: number;
-  totalTopics: number;
   currentStageIndex: number;
   completedStages: Set<number>;
   onSelectStage: (i: number) => void;
 }) {
   const currentPos = NODE_POSITIONS[currentStageIndex] ?? NODE_POSITIONS[0];
 
-  // Smooth Bezier path
+  // Smooth Bezier path connecting nodes
   const pathD = NODE_POSITIONS.reduce((acc, p, i, arr) => {
     if (i === 0) return `M ${p.x} ${p.y}`;
     const prev = arr[i - 1];
@@ -45,7 +31,7 @@ export function RoadmapMap({
   }, "");
 
   return (
-    <div className="relative w-full overflow-hidden shadow-soft pb-32 sm:pb-40">
+    <div className="relative w-full overflow-hidden rounded-3xl shadow-soft ring-2 ring-white">
       {/* Background scenery */}
       <img
         src={halongScene}
@@ -54,48 +40,11 @@ export function RoadmapMap({
         height={896}
         className="absolute inset-0 h-full w-full object-cover"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-sky/30 via-transparent to-white/10" />
+      <div className="absolute inset-0 bg-gradient-to-b from-sky-200/30 via-transparent to-white/20" />
 
-      {/* Topic badge — top left */}
-      <div className="relative z-10 flex flex-wrap items-start justify-between gap-3 px-4 pt-4 sm:px-6 sm:pt-6">
-        <div className="flex items-center gap-2 rounded-2xl bg-white/95 px-3 py-2 shadow-card backdrop-blur">
-          <span className="text-xl">{topic.emoji}</span>
-          <div className="leading-tight">
-            <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">
-              Chủ đề {topicIndex + 1}/{totalTopics}
-            </p>
-            <p className="font-display text-sm font-extrabold text-navy">
-              {topic.title.split(":")[1]?.trim() || topic.title}
-            </p>
-          </div>
-        </div>
-        <div className="rounded-2xl bg-white/95 px-3 py-2 text-xs font-extrabold text-navy shadow-card backdrop-blur">
-          {completedStages.size}/5 chặng hoàn thành
-        </div>
-      </div>
-
-      {/* Title ribbon — centered */}
-      <div className="relative z-10 mx-auto mt-2 w-fit max-w-[90%]">
-        <div className="relative">
-          {/* Ribbon body */}
-          <div className="relative rounded-2xl bg-gradient-to-b from-[oklch(0.88_0.15_80)] to-[oklch(0.75_0.18_55)] px-6 py-2.5 text-center shadow-card sm:px-10 sm:py-3">
-            <div className="absolute inset-0 rounded-2xl ring-2 ring-white/60 ring-inset" />
-            <h2 className="relative font-display text-xl font-extrabold text-white drop-shadow-[0_2px_2px_rgba(120,60,0,0.5)] sm:text-2xl">
-              Hành trình Tiếng Việt
-            </h2>
-            <p className="relative text-xs font-bold text-white/95 sm:text-sm">
-              Cùng Trâu con đội nón lá
-            </p>
-          </div>
-          {/* Ribbon tails */}
-          <div className="absolute -left-3 top-1/2 h-6 w-6 -translate-y-1/2 rotate-45 bg-[oklch(0.6_0.18_45)] opacity-70" />
-          <div className="absolute -right-3 top-1/2 h-6 w-6 -translate-y-1/2 rotate-45 bg-[oklch(0.6_0.18_45)] opacity-70" />
-        </div>
-      </div>
-
-      {/* Roadmap area */}
-      <div className="relative mt-4 h-[320px] w-full sm:h-[360px]">
-        {/* Dotted path */}
+      {/* Roadmap area — keeps a sensible aspect ratio */}
+      <div className="relative aspect-[16/9] w-full min-h-[360px]">
+        {/* Golden dotted path */}
         <svg
           className="absolute inset-0 h-full w-full"
           viewBox="0 0 100 100"
@@ -104,11 +53,12 @@ export function RoadmapMap({
           <path
             d={pathD}
             fill="none"
-            stroke="white"
-            strokeWidth="1.4"
+            stroke="#fbbf24"
+            strokeWidth="1.8"
             strokeDasharray="2.5 2.5"
             strokeLinecap="round"
             opacity="0.95"
+            style={{ filter: "drop-shadow(0 1px 2px rgba(0,0,0,0.3))" }}
           />
         </svg>
 
@@ -119,17 +69,17 @@ export function RoadmapMap({
             index={i}
             xPercent={p.x}
             yPercent={p.y}
-            flagSrc={FLAGS[i]}
             isCurrent={i === currentStageIndex}
             isCompleted={completedStages.has(i)}
+            isLocked={false}
             onClick={() => onSelectStage(i)}
           />
         ))}
 
-        {/* Mascot — positioned to the left of the current flag */}
+        {/* Mascot — positioned above the current stage node */}
         <BuffaloMascot
-          xPercent={Math.max(6, currentPos.x - 5)}
-          yPercent={currentPos.y}
+          xPercent={Math.min(95, currentPos.x + 6)}
+          yPercent={currentPos.y - 5}
         />
       </div>
     </div>
